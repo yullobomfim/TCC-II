@@ -1,7 +1,6 @@
 # TCC-II
 Trabalho de conclusão de curso
 
-# Atores
 ## Usuários do sistema (Usuarios)
 ## Administrador do Sistema (Administrator)
 
@@ -33,8 +32,9 @@ Trabalho de conclusão de curso
 
 ### Empresa
 ### Usuário 
-### Cargos
-### Inventário de Riscos
+### Cargo
+### Inventário
+### Avaliacao
 ### Plano de ação
 
 
@@ -63,7 +63,7 @@ Trabalho de conclusão de curso
 - [x] VueJs
 - [x] Bootstrap
 
-## Back-End
+## Back-En
 - [x] Pytohn
 - [x] Django
 
