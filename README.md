@@ -58,8 +58,8 @@ Trabalho de conclusão de curso
 - [x] Python
 - [x] Bootstrap
 
-## Back-En
-- [x] Pytohn
+## Back-End
+- [x] Python
 - [x] Django
 
 
