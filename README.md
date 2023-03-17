@@ -28,8 +28,6 @@ Trabalho de conclusão de curso
 
 # Tabelas
 
-## Models
-
 ### Empresa
 ### Usuário 
 ### Cargo
@@ -49,18 +47,15 @@ Trabalho de conclusão de curso
 - O sistema deve mostrar uma tabela contendo o inventário de riscos dos usuários.
 - O sistema deve mostrar uma tabela contendo o plano de ação dos usuários.
 - O sistema não permite alteração do plano de ação pelos usuários.
-
 - O preenchimento dos campos do inventário de riscos são obrigatórios, quando houver usuário exposto a riscos.
 - O preenchimento dos campos do plano de ação são obrigatórios, quando houver usuário exposto a riscos.
 
 # Sistema de Login
 ## * sistema de login e senha*
-
-- O acesso será validado pelo metodo Authenticate feito digitando o email e senha
+- O acesso será validado pelo metodo Authenticate do django, e será realizado digitando o email e senha
 
 ## Front-End
-- [x] Javascript
-- [x] VueJs
+- [x] Python
 - [x] Bootstrap
 
 ## Back-En
@@ -68,14 +63,6 @@ Trabalho de conclusão de curso
 - [x] Django
 
 
-
-Cliente servidor:
-
-![Cliente servidor.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c6076cc0-2d69-4c17-9b9f-f2a51d2ddb24/Cliente_servidor.png)
-
-Fluxo de dados no Django:
-
-![diagrama fluxo.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/58b0d368-2402-481a-9bca-2101f71cf6b4/diagrama_fluxo.png)
 
 ## A aplicação:
 
