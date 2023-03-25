@@ -1,67 +1,68 @@
 # TCC-II
-Trabalho de conclusão de curso
+Trabalho de Conclusão de Curso
 
-## Usuários do sistema (Usuarios)
-## Administrador do Sistema (Administrator)
-
-### Usuarios
-- Visualizar o seu ambiente de trabalho.
-- Visualizar o seu inventário de riscos.
-- Visualizar o seu plano de ação.
+## Atores
 
 ### Administrador
-- Cadastrar um Usuario.
-- Cadastrar um ambiente de trabalho.
-- Cadastrar um inventário de riscos.
-- Cadastrar um plano de ação.
+- Cadastrar um Usuario
+- Cadastrar uma empresa
+- Cadastrar um inventário de riscos
+- Cadastrar um plano de ação
 
-- Editar um Usuário.
-- Editar um ambiente de trabalho.
-- Editar um inventário de riscos.
-- Editar um plano de ação.
+- Editar um Usuário
+- Editar uma empresa
+- Editar um inventário de riscos
+- Editar um plano de ação
 
 - Deletar um usuário
-- Deletar um ambiente de trabalho.
-- Deletar um inventário de riscos.
-- Deletar um plano de ação.
+- Deletar uma empresa
+- Deletar um inventário de riscos
+- Deletar um plano de ação
 
+### Usuarios
+- Visualizar a sua empresa
+- Visualizar o seu inventário de riscos
+- Visualizar o seu plano de ação
 
-# Tabelas
+## Tabelas
 
 ### Empresa
 ### Usuário 
-### Cargo
+### Função
 ### Inventário
 ### Avaliacao
 ### Plano de ação
 
 
 # Levantamento de Requisitos de Software
+
 ## Requisitos Funcionais
 - Todos os usuários devem possuir um cadastro com nome, email e senha.
-- Todos os usuários logado no sistema pode visualizar o seu inventário de riscos.
-- Todos os usuários logado no sistema pode visualizar o seu plano de ação.
+- Todos os usuários logados no sistema podem visualizar o seu inventário de riscos.
+- Todos os usuários logados no sistema podem visualizar o seu plano de ação.
 
-## Requisitos Não Funcionais
+## Requisitos Não-Funcionais
 - O sistema deve ser acessado com o email e senha.
 - O sistema deve mostrar uma tabela contendo o inventário de riscos dos usuários.
 - O sistema deve mostrar uma tabela contendo o plano de ação dos usuários.
 - O sistema não permite alteração do plano de ação pelos usuários.
-- O preenchimento dos campos do inventário de riscos são obrigatórios, quando houver usuário exposto a riscos.
-- O preenchimento dos campos do plano de ação são obrigatórios, quando houver usuário exposto a riscos.
+- O preenchimento dos campos da empresa são obrigatórios.
+- O preenchimento dos campos do inventário de riscos são obrigatórios.
+- O preenchimento dos campos do plano de ação são obrigatórios.
 
 # Sistema de Login
-## * sistema de login e senha*
-- O acesso será validado pelo metodo Authenticate do django, e será realizado digitando o email e senha
+## *sistema de login e senha*
+- O acesso será validado pelo metodo Authenticate do django, e será realizado digitando o email e senha do usuário.
 
 ## Front-End
-- [x] Python
+- [x] Html
+- [x] Css
+- [x] Javascript
 - [x] Bootstrap
 
 ## Back-End
 - [x] Python
 - [x] Django
-
 
 
 ## A aplicação:
@@ -95,23 +96,7 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 Fazer a instalação do Django e as demais bibliotecas:
 
 ```python
-pip install django
-```
-
-Criar o projeto em Django:
-
-```python
-django-admin startproject pgr .
-```
-
-Criar um app para lidar com os usuarios e as empresas
-
-```python
-python3 manage.py startapp usuario
-python3 manage.py startapp empresa
-python3 manage.py startapp inventario
-python3 manage.py startapp plano
-
+pip install -r requirements.txt
 ```
 
 
