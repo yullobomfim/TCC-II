@@ -1,87 +1,71 @@
 # TCC-II
-Trabalho de conclusão de curso
+Trabalho de Conclusão de Curso
 
-## Usuários do sistema (Usuarios)
-## Administrador do Sistema (Administrator)
-
-### Usuarios
-- Visualizar o seu ambiente de trabalho.
-- Visualizar o seu inventário de riscos.
-- Visualizar o seu plano de ação.
+## Atores
 
 ### Administrador
-- Cadastrar um Usuario.
-- Cadastrar um ambiente de trabalho.
-- Cadastrar um inventário de riscos.
-- Cadastrar um plano de ação.
+- Cadastrar um Usuario
+- Cadastrar uma empresa
+- Cadastrar um inventário de riscos
+- Cadastrar um plano de ação
 
-- Editar um Usuário.
-- Editar um ambiente de trabalho.
-- Editar um inventário de riscos.
-- Editar um plano de ação.
+- Editar um Usuário
+- Editar uma empresa
+- Editar um inventário de riscos
+- Editar um plano de ação
 
 - Deletar um usuário
-- Deletar um ambiente de trabalho.
-- Deletar um inventário de riscos.
-- Deletar um plano de ação.
+- Deletar uma empresa
+- Deletar um inventário de riscos
+- Deletar um plano de ação
 
+### Usuarios
+- Visualizar a sua empresa
+- Visualizar o seu inventário de riscos
+- Visualizar o seu plano de ação
 
-# Tabelas
-
-## Models
+## Tabelas
 
 ### Empresa
 ### Usuário 
-### Cargo
+### Função
 ### Inventário
 ### Avaliacao
 ### Plano de ação
 
 
-# Levantamento de Requisitos de Software
-## Requisitos Funcionais
-- Todos os usuários devem possuir um cadastro com nome, email e senha.
-- Todos os usuários logado no sistema pode visualizar o seu inventário de riscos.
-- Todos os usuários logado no sistema pode visualizar o seu plano de ação.
+## Levantamento de Requisitos de Software
 
-## Requisitos Não Funcionais
+### Requisitos Funcionais
+- Todos os usuários devem possuir um cadastro com nome, email e senha.
+- Todos os usuários logados no sistema podem visualizar o seu inventário de riscos.
+- Todos os usuários logados no sistema podem visualizar o seu plano de ação.
+
+### Requisitos Não-Funcionais
 - O sistema deve ser acessado com o email e senha.
 - O sistema deve mostrar uma tabela contendo o inventário de riscos dos usuários.
 - O sistema deve mostrar uma tabela contendo o plano de ação dos usuários.
 - O sistema não permite alteração do plano de ação pelos usuários.
+- O preenchimento dos campos da empresa são obrigatórios.
+- O preenchimento dos campos do inventário de riscos são obrigatórios.
+- O preenchimento dos campos do plano de ação são obrigatórios.
 
-- O preenchimento dos campos do inventário de riscos são obrigatórios, quando houver usuário exposto a riscos.
-- O preenchimento dos campos do plano de ação são obrigatórios, quando houver usuário exposto a riscos.
-
-# Sistema de Login
-## * sistema de login e senha*
-
-- O acesso será validado pelo metodo Authenticate feito digitando o email e senha
-
-## Front-End
+### Front-End
+- [x] Html
+- [x] Css
 - [x] Javascript
-- [x] VueJs
 - [x] Bootstrap
 
-## Back-En
-- [x] Pytohn
+### Back-End
+- [x] Python
 - [x] Django
 
-
-
-Cliente servidor:
-
-![Cliente servidor.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c6076cc0-2d69-4c17-9b9f-f2a51d2ddb24/Cliente_servidor.png)
-
-Fluxo de dados no Django:
-
-![diagrama fluxo.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/58b0d368-2402-481a-9bca-2101f71cf6b4/diagrama_fluxo.png)
 
 ## A aplicação:
 
 ## **Configurações iniciais:**
 
-Criar o ambiente virtual
+Criar o ambiente virtual (Utilizando Máquina Virtual)
 
 ```python
 # Criar
@@ -105,26 +89,17 @@ Após a criação do venv. Ativa-lo:
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ```
 
-Fazer a instalação do Django e as demais bibliotecas:
+Fazer a instalação das dependências do projeto:
 
 ```python
-pip install django
+pip install -r requirements.txt
 ```
 
-Criar o projeto em Django:
-
+Criar o ambiente virtual (Utilizando Docker)
 ```python
-django-admin startproject pgr .
-```
-
-Criar um app para lidar com os usuarios e as empresas
-
-```python
-python3 manage.py startapp usuario
-python3 manage.py startapp empresa
-python3 manage.py startapp inventario
-python3 manage.py startapp plano
-
+# Rodar o container do projeto
+	docker-compose up -d
+	
 ```
 
 

@@ -16,8 +16,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('', include('autenticar.urls')),
     path('admin/', admin.site.urls),
-    path('', include('empresa.urls')),
-
+    path('empresa/', include('empresa.urls')),
+#    path('^chaining/', include('smart_selects.urls')),
 ]
-
