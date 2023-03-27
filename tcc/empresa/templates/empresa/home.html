@@ -10,40 +10,59 @@
 
 <div class="container-fluid">
         <div class="row">
-            <div class="col-md-5 bg-side">
+        <div class="col-md-5 bg-side">
                 <div class='header'>
-                    <img src="{% static 'usuarios/img/logo-pgr.png' %}" width="50%">
+                        <img src="{% static 'usuarios/img/logo-pgr.png' %}" width="52%">
                 </div>
-                <div class="body-form">
-                    {% if messages %}
+                <hr>
+                <h5>Consultar Inventário de Riscos</h5>
+                <hr>
+                <form action="{% url 'cadastro' %}" method="GET">
+                        <span>Empresa:</span>
+                        <input type="text" class="form-control" placeholder="Empresa..." name="empresa">
                         <br>
-                        {% for message in messages %}
-                            <div class="alert {{message.tags}}">
-                                {{message}}
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                    <h2>Inventário de Riscos</h2>
-                    <hr>
-                </div>
-            </div>
+                        <span>Função:</span>
+                        <input type="text" class="form-control" placeholder="Função..." name="funcao">
+                        <br>
+                        <span>Inventário:</span>
+                        <input type="text" class="form-control" placeholder="Inventário..." name="invetentario">
+                        <br>
+                        <span>Plano de Ação:</span>
+                        <input type="text" class="form-control" placeholder="Plano de Ação..." name="planoacao">
+                        <br>
+                </form>
 
-            <div class="col-md-7">
-                <div class="side-logo">
-                    <span>Introdução</span>
-                    <p> Principais perigos e medidas de prevenção a serem adotadas.</p>
-                    <p>Este Inventário contempla as seguintes funções:</p>
-                    <ul>
-                            {% for empresa in empresas %}
-                            <li> {{empresa.id}} - {{empresa.nome_empresa}} </li>
-                            {% endfor %}
-                    </ul>
-            
-                    <a href="{% url 'sair' %}" class="link-float">Sair</a>
-            
-                </div>
-            </div>
         </div>
-    </div>
+        <div class="col-md-7">
+                <div class="side-logo">
+                <h3> Identificação --> Avaliação --> Controle</h3>
+                <hr>
+                <h6>Identificação dos Perigos:</h6>
+                <ul>
+                        {% for descricao_perigo in descricao_perigo %}
+                        <li> {{descricao_perigo.id}} - {{descricao_perigo}} </li>
+                        {% endfor %}
+                </ul>
+                <hr>
+                <h6>Avaliação dos Riscos:</h6>
+                <ul>
+                        {% for funcao in funcao %}
+                        <li> {{funcao.id}} - {{funcao.funcao}} </li>
+                        {% endfor %}
+                </ul>
+                <hr>
+                <h6>Controle dos Riscos:</h6>
+                <ul>
+                        {% for tipo_risco in tipos_riscos %}
+                        <li> {{tipos_risco.id}} - {{tipos_risco.funcao}} </li>
+                        {% endfor %}
+                </ul>
+</div>
+<hr>
+<a href="{% url 'sair' %}" class="link-float">Sair</a>
+        </div>
+        </div>
+</div>
 
 {% endblock content %}
+

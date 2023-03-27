@@ -24,7 +24,7 @@ class Funcao(models.Model):
         return self.funcao
     
     class Meta:
-        verbose_name_plural = "Funcões"
+        verbose_name_plural = "funcoes"
         
     
 class Usuario(models.Model):
@@ -989,68 +989,128 @@ class Tiporisco(models.Model):
 
     
 class Descricaoperigo(models.Model):
-    impacto_sofrido = '200032200'
+
+    IMPACTO0 = '200004300'
+    IMPACTO1 = '200004600'
+    IMPACTO2 = '200008300'
+    IMPACTO3 = '200008600'
+    IMPACTO4 = '200008900'
+    QUEDA0 = '200012200'
+    QUEDA1 = '200012300'
+    QUEDA2 = '200012400'
+    QUEDA3 = '200012500'
+    QUEDA4 = '200012600'
+    QUEDA5 = '200012700'
+    QUEDA6 = '200012900'
+    QUEDA7 = '200016300'
+    QUEDA8 = '200016600'
+    QUEDA9 = '200016900'
+    APRISIONAMENTO0 = '200020100'
+    APRISIONAMENTO1 = '200020300'
+    APRISIONAMENTO2 = '200020500'
+    APRISIONAMENTO3 = '200020700'
+    APRISIONAMENTO4 = '200020900'
+    ATRITO0 = '200024300'
+    ATRITO1 = '200024400'
+    ATRITO2 = '200024500'
+    ATRITO3 = '200024600'
+    ATRITO4 = '200024700'
+    ATRITO5= '200024900'
+    REAÇÃO0 = '200028300'
+    REAÇÃO1 = '200028600'
+    ESFORÇO0 = '200032200'
+    ESFORÇO1 = '200032400'
+    ESFORÇO2 = '200032600'
+    ESFORÇO3 = '200032900'
+    ELÉTRICA0 = '200036000'
+    TEMPERATURA0 = '200040300'
+    TEMPERATURA1 = '200040600'
+    TEMPERATURA2 = '200044300'
+    TEMPERATURA3 = '200044600'
+    INALAÇÃO0 = '200048200'
+    INGESTÃO = '200048400'
+    ABSORÇÃO = '200048600'
+    INALAÇÃO1 = '200048900'
+    IMERSÃO0 = '200052000'
+    RADIAÇÃO0 = '200056000'
+    RADIAÇÃO1 = '200060000'
+    RUÍDO = '200064000'
+    VIBRAÇÃO = '200068000'
+    PRESSÃO = '200072000'
+    EXPOSIÇÃO0 = '200072300'
+    EXPOSIÇÃO1 = '200072600'
+    POLUIÇÃO0 = '200076200'
+    POLUIÇÃO1 = '200076400'
+    POLUIÇÃO2 = '200076600'
+    POLUIÇÃO3 = '200076900'
+    ATAQUE0 = '200080200'
+    ATAQUE1 = '200080400'
+    ATAQUE2 = '200080600'
+    ATAQUE3 = '200080900'
+    TIPO0 = '209000000'
+    TIPO1 = '209500000'
+    
     
     choice_perigos = (
-        ('200004300','Impacto de pessoa contra objeto parado'),
-        ('200004600','Impacto de pessoa contra objeto em movimento'),
-        ('200008300','Impacto sofrido por pessoa de objeto que cai'),
-        ('200008600','Impacto sofrido por pessoa de objeto projetado'),
-        ('200008900','Impacto sofrido por pessoa, NIC'),
-        ('200012200','Queda de pessoa com diferença de nível de andaime, passagem, plataforma, etc.'),
-        ('200012300','Queda de pessoa com diferença de nível de escada móvel ou fixada cujos degraus'),
-        ('200012400','Queda de pessoa com diferença de nível de material empilhado'),
-        ('200012500','Queda de pessoa com diferença de nível de veículo'),
-        ('200012600','Queda de pessoa com diferença de nível em escada permanente'),
-        ('200012700','Queda de pessoa com diferença de nível em poço, escavação, abertura no piso, etc.'),
-        ('200012900','Queda de pessoa com diferença de nível, NIC'),
-        ('200016300','Queda de pessoa em mesmo nível em passagem ou superfície de sustentação'),
-        ('200016600','Queda de pessoa em mesmo nível sobre ou contra alguma coisa'),
-        ('200016900','Queda de pessoa em mesmo nível, NIC'),
-        ('200020100','Aprisionamento em, sobre ou entre objetos em movimento convergente'),
-        ('200020300','Aprisionamento em, sobre ou entre objeto parado e outro em movimento'),
-        ('200020500','Aprisionamento em, sobre ou entre dois ou mais objetos em movimento'),
-        ('200020700','Aprisionamento em, sobre ou entre desabamento ou desmoronamento'),
-        ('200020900','Aprisionamento em, sob ou entre, NIC'),
-        ('200024300','Atrito ou abrasão por encostar, pisar, ajoelhar ou sentar em objeto'),
-        ('200024400','Atrito ou abrasão por manusear objeto'),
-        ('200024500','Atrito ou abrasão por objeto em vibração'),
-        ('200024600','Atrito ou abrasão por corpo estranho no olho'),
-        ('200024700','Atrito ou abrasão por compressão repetitiva'),
-        ('200024900','Atrito ou abrasão, NIC'),
-        ('200028300','Reação do corpo a movimento involuntário'),
-        ('200028600','Reação do corpo a movimento voluntário'),
-        ('200032200','Esforço excessivo ao erguer objeto'),
-        ('200032400','Esforço excessivo ao empurrar ou puxar objeto'),
-        ('200032600','Esforço excessivo ao manejar, sacudir ou arremessar objeto'),
-        ('200032900','Esforço excessivo, NIC'),
-        ('200036000','Elétrica, exposição a energia'),
-        ('200040300','Temperatura muito alta, contato com objeto ou substância a'),
-        ('200040600','Temperatura muito baixa, contato com objeto ou substância a'),
-        ('200044300','Temperatura ambiente elevada, exposição a'),
-        ('200044600','Temperatura ambiente baixa, exposição a'),
-        ('200048200','Inalação de substância cáustica, tóxica ou nociva'),
-        ('200048400','Ingestão de substância cáustica'),
-        ('200048600','Absorção de substância cáustica'),
-        ('200048900','Inalação, ingestão ou absorção, NIC'),
-        ('200052000','Imersão'),
-        ('200056000','Radiação não ionizante, exposição a'),
-        ('200060000','Radiação ionizante, exposição a'),
-        ('200064000','Ruído, exposição a'),
-        ('200068000','Vibração, exposição a'),
-        ('200072000','Pressão ambiente, exposição a'),
-        ('200072300','Exposição à pressão ambiente elevada'),
-        ('200072600','Exposição à pressão ambiente baixa'),
-        ('200076200','Poluição da água, ação da (exposição à poluição da água)'),
-        ('200076400','Poluição do ar, ação da (exposição à poluição do ar)'),
-        ('200076600','Poluição do solo, ação da (exposição à poluição do solo)'),
-        ('200076900','Poluição, NIC, exposição a (exposição à poluição, NIC)'),
-        ('200080200','Ataque de ser vivo por mordedura, picada, chifrada, coice, etc.'),
-        ('200080400','Ataque de ser vivo com peçonha'),
-        ('200080600','Ataque de ser vivo com transmissão de doença'),
-        ('200080900','Ataque de ser vivo, NIC'),
-        ('209000000','Tipo, NIC  '),
-        ('209500000','Tipo inexistente'),
+        (IMPACTO0,'Impacto de pessoa contra objeto parado'),
+        (IMPACTO1,'Impacto de pessoa contra objeto em movimento'),
+        (IMPACTO2,'Impacto sofrido por pessoa de objeto que cai'),
+        (IMPACTO3,'Impacto sofrido por pessoa de objeto projetado'),
+        (IMPACTO4,'Impacto sofrido por pessoa, NIC'),
+        (QUEDA0,'Queda de pessoa com diferença de nível de andaime, passagem, plataforma, etc.'),
+        (QUEDA1,'Queda de pessoa com diferença de nível de escada móvel ou fixada cujos degraus'),
+        (QUEDA2,'Queda de pessoa com diferença de nível de material empilhado'),
+        (QUEDA3,'Queda de pessoa com diferença de nível de veículo'),
+        (QUEDA4,'Queda de pessoa com diferença de nível em escada permanente'),
+        (QUEDA5,'Queda de pessoa com diferença de nível em poço, escavação, abertura no piso, etc.'),
+        (QUEDA6,'Queda de pessoa com diferença de nível, NIC'),
+        (QUEDA7,'Queda de pessoa em mesmo nível em passagem ou superfície de sustentação'),
+        (QUEDA8,'Queda de pessoa em mesmo nível sobre ou contra alguma coisa'),
+        (QUEDA9,'Queda de pessoa em mesmo nível, NIC'),
+        (APRISIONAMENTO0,'Aprisionamento em, sobre ou entre objetos em movimento convergente'),
+        (APRISIONAMENTO1,'Aprisionamento em, sobre ou entre objeto parado e outro em movimento'),
+        (APRISIONAMENTO2,'Aprisionamento em, sobre ou entre dois ou mais objetos em movimento'),
+        (APRISIONAMENTO3,'Aprisionamento em, sobre ou entre desabamento ou desmoronamento'),
+        (APRISIONAMENTO4,'Aprisionamento em, sob ou entre, NIC'),
+        (ATRITO0,'Atrito ou abrasão por encostar, pisar, ajoelhar ou sentar em objeto'),
+        (ATRITO1,'Atrito ou abrasão por manusear objeto'),
+        (ATRITO2,'Atrito ou abrasão por objeto em vibração'),
+        (ATRITO3,'Atrito ou abrasão por corpo estranho no olho'),
+        (ATRITO4,'Atrito ou abrasão por compressão repetitiva'),
+        (ATRITO5,'Atrito ou abrasão, NIC'),
+        (REAÇÃO0,'Reação do corpo a movimento involuntário'),
+        (REAÇÃO1,'Reação do corpo a movimento voluntário'),
+        (ESFORÇO0,'Esforço excessivo ao erguer objeto'),
+        (ESFORÇO1,'Esforço excessivo ao empurrar ou puxar objeto'),
+        (ESFORÇO2,'Esforço excessivo ao manejar, sacudir ou arremessar objeto'),
+        (ESFORÇO3,'Esforço excessivo, NIC'),
+        (ELÉTRICA0,'Elétrica, exposição a energia'),
+        (TEMPERATURA0,'Temperatura muito alta, contato com objeto ou substância a'),
+        (TEMPERATURA1,'Temperatura muito baixa, contato com objeto ou substância a'),
+        (TEMPERATURA2,'Temperatura ambiente elevada, exposição a'),
+        (TEMPERATURA3,'Temperatura ambiente baixa, exposição a'),
+        (INALAÇÃO0,'Inalação de substância cáustica, tóxica ou nociva'),
+        (INGESTÃO,'Ingestão de substância cáustica'),
+        (ABSORÇÃO,'Absorção de substância cáustica'),
+        (INALAÇÃO1,'Inalação, ingestão ou absorção, NIC'),
+        (IMERSÃO0,'Imersão'),
+        (RADIAÇÃO0,'Radiação não ionizante, exposição a'),
+        (RADIAÇÃO1,'Radiação ionizante, exposição a'),
+        (RUÍDO,'Ruído, exposição a'),
+        (VIBRAÇÃO,'Vibração, exposição a'),
+        (PRESSÃO,'Pressão ambiente, exposição a'),
+        (EXPOSIÇÃO0,'Exposição à pressão ambiente elevada'),
+        (EXPOSIÇÃO1,'Exposição à pressão ambiente baixa'),
+        (POLUIÇÃO0,'Poluição da água, ação da (exposição à poluição da água)'),
+        (POLUIÇÃO1,'Poluição do ar, ação da (exposição à poluição do ar)'),
+        (POLUIÇÃO2,'Poluição do solo, ação da (exposição à poluição do solo)'),
+        (POLUIÇÃO3,'Poluição, NIC, exposição a (exposição à poluição, NIC)'),
+        (ATAQUE0,'Ataque de ser vivo por mordedura, picada, chifrada, coice, etc.'),
+        (ATAQUE1,'Ataque de ser vivo com peçonha'),
+        (ATAQUE2,'Ataque de ser vivo com transmissão de doença'),
+        (ATAQUE3,'Ataque de ser vivo, NIC'),
+        (TIPO0,'Tipo, NIC  '),
+        (TIPO1,'Tipo inexistente'),
     )
     
     descricao_perigo = models.CharField(max_length=2000, choices=choice_perigos)
@@ -1181,12 +1241,19 @@ class Medidasimplementadas(models.Model):
         verbose_name_plural = "Medidas Implementadas"
     
 class Tempoexposicao(models.Model):
+    
+    HH0 = '0'
+    HH1 = '1'
+    HH2 = '2'
+    HH3 = '3'
+    HH4 = '4'
+                    
     choice_exposicao = (
-        ('0','até 1 hora por dia'),
-        ('1','até 2 horas por dia'),
-        ('2','até 4 horas por dia'),
-        ('3','até 6 horas por dia'),
-        ('4','até 8 horas por dia'),
+        (HH0,'Até 1 hora por dia'),
+        (HH1,'Até 2 horas por dia'),
+        (HH2,'Até 4 horas por dia'),
+        (HH3,'Até 6 horas por dia'),
+        (HH4,'Até 8 horas por dia'),
         )
     
     tempo_exposicao = models.CharField(max_length=200, choices=choice_exposicao)
@@ -1235,8 +1302,25 @@ class Medidascontrole(models.Model):
         verbose_name_plural = "Medidas de Controle"
 
 class Nivelexposicao(models.Model):
-    nivel_exposicao = models.CharField(max_length=200)
-    ne = models.CharField(max_length=200)
+    choice_nivel_exposicao = (
+    ('A','Aceitável'),
+    ('I','Ineficiente'),
+    ('D','Deficiente'),
+    ('MD','Muito Deficiente'),
+    ('DT','Deficiência Total'),
+    )
+    
+    choice_ne = (
+        ('1','1'),
+        ('2','2'),
+        ('6','6'),
+        ('10','10'),
+        ('14','14'),
+        )
+
+    
+    nivel_exposicao = models.CharField(max_length=200, choices=choice_nivel_exposicao)
+    ne = models.CharField(max_length=200, choices=choice_ne)
     significado = models.TextField()
     def __str__(self):
         return self.nivel_exposicao
@@ -1244,25 +1328,81 @@ class Nivelexposicao(models.Model):
         verbose_name_plural = "Níveis de Exposição"
 
 class Nivelprobabilidade(models.Model):
-    nivel_probabilidade = models.CharField(max_length=200)
-    np = models.CharField(max_length=200)
+    choice_nivel_probabilidade = (
+    ('A','Aceitável'),
+    ('I','Ineficiente'),
+    ('D','Deficiente'),
+    ('MD','Muito Deficiente'),
+    ('DT','Deficiência Total'),
+    )
+    
+    choice_np = (
+        ('1','1'),
+        ('2','2'),
+        ('6','6'),
+        ('10','10'),
+        ('14','14'),
+        )
+
+    
+    nivel_probabilidade = models.CharField(max_length=200, choices=choice_nivel_probabilidade)
+    np = models.CharField(max_length=200, choices=choice_np)
     significado = models.TextField()
     def __str__(self):
         return self.nivel_probabilidade
     class Meta:
-        verbose_name_plural = "Níveis de Probabilidade"    
+        verbose_name_plural = "Níveis de Probabilidade"
+            
 class Nivelgravidade(models.Model):
-    nivel_gravidade = models.CharField(max_length=200)
-    ng = models.CharField(max_length=200)
+    choice_nivel_gravidade = (
+    ('A','Aceitável'),
+    ('I','Ineficiente'),
+    ('D','Deficiente'),
+    ('MD','Muito Deficiente'),
+    ('DT','Deficiência Total'),
+    )
+    
+    choice_ng = (
+        ('1','1'),
+        ('2','2'),
+        ('6','6'),
+        ('10','10'),
+        ('14','14'),
+        )
+
+    nivel_gravidade = models.CharField(max_length=200, choices=choice_nivel_gravidade)
+    ng = models.CharField(max_length=200, choices=choice_ng)
     significado = models.TextField()
     def __str__(self):
         return self.nivel_gravidade
     class Meta:
         verbose_name_plural = "Níveis de Gravidade"    
 class Nivelrisco(models.Model):
+    AA = 'A'
+    II = 'I'
+    DD = 'D'
+    MD = 'MD'
+    DT = 'DT'
+    
+    choice_nivel_risco = (
+    (AA,'Aceitável'),
+    (II,'Ineficiente'),
+    (DD,'Deficiente'),
+    (MD,'Muito Deficiente'),
+    (DT,'Deficiência Total'),
+    )
+    
+    choice_np = (
+        ('1','1'),
+        ('2','2'),
+        ('6','6'),
+        ('10','10'),
+        ('14','14'),
+        )
+
     ng = models.ForeignKey(Nivelgravidade, on_delete=models.CASCADE)
     np = models.ForeignKey(Nivelprobabilidade, on_delete=models.CASCADE)
-    nivel_risco = models.CharField(max_length=200)
+    nivel_risco = models.CharField(max_length=200, choices=choice_nivel_risco)
     def __str__(self):
         return self.nivel_risco
     class Meta:

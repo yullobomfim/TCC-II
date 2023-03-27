@@ -15,7 +15,7 @@ def cadastro(request):
     if request.method == "GET":
         return render(request, 'cadastro.html')
     
-    elif request.method == "POST":
+    elif request.method == "POST" :
         nome = request.POST.get('nome')
         email = request.POST.get('email')
         senha = request.POST.get('senha')
@@ -48,7 +48,7 @@ def logar(request):
 
     if request.method == "GET":
         return render(request, 'login.html')
-    elif request.method == "POST":
+    elif request.method == "POST" :
         nome = request.POST.get('nome')
         senha = request.POST.get('senha')
         
@@ -67,4 +67,4 @@ def logar(request):
 @login_required        
 def sair(request):
     logout(request)
-    return redirect('/sair')
+    return redirect('')
