@@ -1293,9 +1293,24 @@ class Medidascontrole(models.Model):
         ('14','14'),
         )
     
+    choice_significado = (
+        ('1','Não Foram detectadas anomalias'),
+        ('1','O perigo está controlado'),
+        ('2','Foram detectados fatores de risco de menor importancia'),
+        ('2','O dano pode ocorrer algumas vezes'),
+        ('6','Foram detectados alguns fatores de risco significativos'),
+        ('6','As medidas preventivas existentes tem sua eficávia reduzida'),
+        ('10','Foram detectados fatores de risco significativos'),
+        ('10','As medidas preventivas existentes são ineficazes'),
+        ('10','O dano ocorerá na maior parte das circunstâncias'),
+        ('14','Medidas preventivas inexistentes ou desadequadas'),
+        ('14','São esperados danos na maior parte das situações'),
+        )
+
+    
     medidas_controle = models.CharField(max_length=200, choices=choice_medidas_controle)
     nmc = models.CharField(max_length=200, choices=choice_nmc)
-    significado = models.TextField()
+    significado = models.CharField(max_length=200, choices=choice_significado)
     def __str__(self):
         return self.medidas_controle
     class Meta:
@@ -1303,25 +1318,33 @@ class Medidascontrole(models.Model):
 
 class Nivelexposicao(models.Model):
     choice_nivel_exposicao = (
-    ('A','Aceitável'),
-    ('I','Ineficiente'),
-    ('D','Deficiente'),
-    ('MD','Muito Deficiente'),
-    ('DT','Deficiência Total'),
+    ('E','Exporádica'),
+    ('P','Pouco Frequente'),
+    ('O','Ocasional'),
+    ('F','Frequente'),
+    ('C','Continuada'),
     )
     
     choice_ne = (
         ('1','1'),
         ('2','2'),
-        ('6','6'),
-        ('10','10'),
-        ('14','14'),
+        ('3','3'),
+        ('4','4'),
+        ('5','5'),
         )
 
-    
+    choice_significado = (
+        ('1','Uma vez por ano, por pouco tempo(minutos)'),
+        ('2','Algumas vezes por ano e por período de tempo determinado'),
+        ('3','Algumas vezes por mês'),
+        ('4','Várias vezes durante o período laboral, ainda que com tempos curtos'),
+        ('4','Várias vezes por semana ou diário'),
+        ('5','Várias vezes por dia com tempo prolongado ou continuamente'),
+        )
+
     nivel_exposicao = models.CharField(max_length=200, choices=choice_nivel_exposicao)
     ne = models.CharField(max_length=200, choices=choice_ne)
-    significado = models.TextField()
+    significado = models.CharField(max_length=200, choices=choice_significado)
     def __str__(self):
         return self.nivel_exposicao
     class Meta:
@@ -1329,25 +1352,33 @@ class Nivelexposicao(models.Model):
 
 class Nivelprobabilidade(models.Model):
     choice_nivel_probabilidade = (
-    ('A','Aceitável'),
-    ('I','Ineficiente'),
-    ('D','Deficiente'),
-    ('MD','Muito Deficiente'),
-    ('DT','Deficiência Total'),
+    ('MB','Muito Baixa'),
+    ('PF','Pouco Frequente'),
+    ('M','Média'),
+    ('A','Alta'),
+    ('MA','Muito Alta'),
     )
     
     choice_np = (
-        ('1','1'),
-        ('2','2'),
-        ('6','6'),
-        ('10','10'),
-        ('14','14'),
+        ('1','1 a 3'),
+        ('4','4 a 6'),
+        ('8','8 a 20'),
+        ('24','24 a 30'),
+        ('40','40 a 70'),
+        )
+    
+    choice_significado = (
+        ('1','Não é de se esperar que a situação perigosa se materialize, ainda que possa ser concebida'),
+        ('4','A materialização da situação perigosa pode ocorrer'),
+        ('8','A materialização da situação perigosa é passível de ocorrer pelo menos uma vez com danos'),
+        ('24','A materizalização da situação perigosa pode ocorrer várias vezes durante o peródo de trabalho'),
+        ('40','Normalmente a materizalização da situação perigosa ocorre com frequência'),
         )
 
     
     nivel_probabilidade = models.CharField(max_length=200, choices=choice_nivel_probabilidade)
     np = models.CharField(max_length=200, choices=choice_np)
-    significado = models.TextField()
+    significado = models.CharField(max_length=200, choices=choice_significado)
     def __str__(self):
         return self.nivel_probabilidade
     class Meta:
@@ -1355,66 +1386,88 @@ class Nivelprobabilidade(models.Model):
             
 class Nivelgravidade(models.Model):
     choice_nivel_gravidade = (
-    ('A','Aceitável'),
-    ('I','Ineficiente'),
-    ('D','Deficiente'),
-    ('MD','Muito Deficiente'),
-    ('DT','Deficiência Total'),
+    ('I','Insignificante'),
+    ('L','Leve'),
+    ('M','Moderado'),
+    ('G','Grave'),
+    ('M','Mortal'),
     )
     
     choice_ng = (
-        ('1','1'),
-        ('2','2'),
-        ('6','6'),
         ('10','10'),
-        ('14','14'),
+        ('25','25'),
+        ('60','60'),
+        ('90','90'),
+        ('155','155'),
+        )
+
+    choice_significado = (
+        ('10','Não há danos pessoais'),
+        ('25','Pequenas lesões que não requerem hospitalização. Apenas primeiros socorros'),
+        ('60','Lesões com incapacidade transitória. REquerem tratamento médico'),
+        ('90','Lesões graves que podem ser irreparáveis'),
+        ('155','Morte ou incapacidade permanente'),
         )
 
     nivel_gravidade = models.CharField(max_length=200, choices=choice_nivel_gravidade)
     ng = models.CharField(max_length=200, choices=choice_ng)
-    significado = models.TextField()
+    significado = models.CharField(max_length=200, choices=choice_significado)
+
     def __str__(self):
         return self.nivel_gravidade
     class Meta:
         verbose_name_plural = "Níveis de Gravidade"    
-class Nivelrisco(models.Model):
-    AA = 'A'
-    II = 'I'
-    DD = 'D'
-    MD = 'MD'
-    DT = 'DT'
-    
-    choice_nivel_risco = (
-    (AA,'Aceitável'),
-    (II,'Ineficiente'),
-    (DD,'Deficiente'),
-    (MD,'Muito Deficiente'),
-    (DT,'Deficiência Total'),
-    )
-    
-    choice_np = (
-        ('1','1'),
-        ('2','2'),
-        ('6','6'),
-        ('10','10'),
-        ('14','14'),
-        )
 
+class Nivelrisco(models.Model):
     ng = models.ForeignKey(Nivelgravidade, on_delete=models.CASCADE)
     np = models.ForeignKey(Nivelprobabilidade, on_delete=models.CASCADE)
-    nivel_risco = models.CharField(max_length=200, choices=choice_nivel_risco)
+    nivel_risco = models.CharField(max_length=20)
+    
     def __str__(self):
         return self.nivel_risco
     class Meta:
-        verbose_name_plural = "Níveis de Risco"    
+        verbose_name_plural = "Níveis de Risco" 
+
 class Classificacaorisco(models.Model):
-    nr = models.CharField(max_length=200)
-    classificacao_risco = models.CharField(max_length=200)
-    significado = models.TextField()
+
+    choice_classificacao_risco = (
+    ('C','Crítico'),
+    ('A','Alto'),
+    ('M','Moderado'),
+    ('B','Baixo'),
+    ('I','Irrelevante'),
+    )
+    
+    choice_nr = (
+        ('10850','3360 a 10850'),
+        ('3100','1240 a 3100'),
+        ('1200','360 a 1200'),
+        ('300','90 a 300'),
+        ('80','10 a 80'),
+        )
+
+    choice_significado = (
+        ('10850','Situação CRITÍCA'),
+        ('10850','Intervenção imediata'),
+        ('10850','Isolar o perigo até serem adaptadas às medidas de controle'),
+        ('3100','Situação a CORRIGIR'),
+        ('3100','Adaptar medidas de controle enquanto a situação perigosa não for eliminada ou reduzida'),
+        ('1200','Situação a MELHORAR'),
+        ('1200','Deverão ser elaborados planos, programas ou procedimentos, documentados de intervenção'),
+        ('300','MELHORAR SE POSSÍVEL, justificando a intervenção'),
+        ('80','Intervir apenas se uma análise mais pormenorizada o justificar'),
+        )
+
+    
+    nr = models.CharField(max_length=200, choices=choice_nr)
+    classificacao_risco = models.CharField(max_length=200, choices=choice_classificacao_risco)
+    significado = models.CharField(max_length=200, choices=choice_significado)
+    
     def __str__(self):
         return self.classificacao_risco
     class Meta:
         verbose_name_plural = "Classificação de Riscos"
+
 class Avaliacaorisco(models.Model):
     medidas_controle = models.ForeignKey(Medidascontrole, verbose_name=('medidas_controle'), on_delete=models.CASCADE)
     nivel_exposicao = models.ForeignKey(Nivelexposicao, verbose_name=('nivel_exposicao'), on_delete=models.CASCADE)
@@ -1427,6 +1480,7 @@ class Avaliacaorisco(models.Model):
         return self.classificacao_risco
     class Meta:
         verbose_name_plural = "Avaliações de Risco"
+        
 class PlanoAcao(models.Model):
     oque = models.CharField(max_length=200)
     porque = models.CharField(max_length=200)
@@ -1437,7 +1491,8 @@ class PlanoAcao(models.Model):
     quanto = models.DecimalField(max_digits=7, decimal_places=2)
     
     def __str__(self):
-        return self.oque
+        return {self.porque}
+    
     class Meta:
         verbose_name_plural = "Planos de Ação"
 

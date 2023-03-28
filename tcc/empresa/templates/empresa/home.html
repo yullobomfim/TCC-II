@@ -47,14 +47,14 @@
                 <h6>Avaliação dos Riscos:</h6>
                 <ul>
                         {% for funcao in funcao %}
-                        <li> {{funcao.id}} - {{funcao.funcao}} </li>
+                        <li> {{funcao.id}}</li>
                         {% endfor %}
                 </ul>
                 <hr>
                 <h6>Controle dos Riscos:</h6>
                 <ul>
-                        {% for tipo_risco in tipos_riscos %}
-                        <li> {{tipos_risco.id}} - {{tipos_risco.funcao}} </li>
+                        {% for risco in riscos %}
+                        <li> {{risco.id}} </li>
                         {% endfor %}
                 </ul>
 </div>
