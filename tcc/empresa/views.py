@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Empresa, Tiporisco, Funcao, Descricaoperigo
+from .models import Empresa, Tiporisco, Funcao, Descricaoperigo, Inventario
 
 # Create your views here.
 def home(request):
@@ -7,6 +7,7 @@ def home(request):
     riscos = Tiporisco.objects.all()
     funcao = Funcao.objects.all()
     descricao_perigo = Descricaoperigo.objects.all()
+    inventario = Inventario.objects.all()
 
 
     return render(request, 'empresa/home.html',
@@ -15,6 +16,7 @@ def home(request):
             "riscos": riscos,
             "funcao": funcao,
             "descricao_perigo":descricao_perigo,
+            "inventario":inventario,
             }
                 )
     

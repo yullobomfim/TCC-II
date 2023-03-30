@@ -1269,6 +1269,7 @@ class Inventario(models.Model):
     fonte_risco = models.ForeignKey(Fonterisco, verbose_name=("fonte"), on_delete=models.CASCADE)
     medidas_implementadas = models.ForeignKey(Medidasimplementadas, verbose_name=("medidas"), on_delete=models.CASCADE)
     tempo_exposicao = models.ForeignKey(Tempoexposicao, verbose_name=("exposicao"), on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.descricao_perigo
 
@@ -1484,14 +1485,14 @@ class Avaliacaorisco(models.Model):
 class PlanoAcao(models.Model):
     oque = models.CharField(max_length=200)
     porque = models.CharField(max_length=200)
-    quando = models.DateField(auto_now=False, auto_now_add=False)
+    quando = models.CharField(max_length=200)
     quem = models.CharField(max_length=200)
     onde = models.CharField(max_length=200)
     como = models.CharField(max_length=200)
     quanto = models.DecimalField(max_digits=7, decimal_places=2)
     
     def __str__(self):
-        return {self.porque}
+        return {self.oque}
     
     class Meta:
         verbose_name_plural = "Planos de Ação"
