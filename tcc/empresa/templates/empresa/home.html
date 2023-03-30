@@ -18,17 +18,28 @@
                 <h5>Consultar Inventário de Riscos</h5>
                 <hr>
                 <form action="{% url 'cadastro' %}" method="GET">
-                        <span>Empresa:</span>
-                        <input type="text" class="form-control" placeholder="Empresa..." name="empresa">
+                        <button type="text" class="form-control" placeholder="Empresa..." name="empresa">
+                        <span>Empresas</span>
                         <br>
-                        <span>Função:</span>
-                        <input type="text" class="form-control" placeholder="Função..." name="funcao">
+                        {% for empresa in empresas %}
+                        <li> {{empresa.nome_empresa}}</li>
+                        {% endfor %}
+
+                        <button type="text" class="form-control" placeholder="Função..." name="funcao">
+                        <span>Funções</span>
                         <br>
-                        <span>Inventário:</span>
-                        <input type="text" class="form-control" placeholder="Inventário..." name="invetentario">
+                        {% for funcao in funcao %}
+                        <li> {{funcao.funcao}}</li>
+                        {% endfor %}
+                        <button type="text" class="form-control" placeholder="Inventário..." name="invetentario">
+                        <span>Inventário</span>
                         <br>
+                        {% for riscos in riscos %}
+                        <li> {{riscos.riscos}}</li>
+                        {% endfor %}
+
+                        <button type="text" class="form-control" placeholder="Plano de Ação..." name="planoacao">
                         <span>Plano de Ação:</span>
-                        <input type="text" class="form-control" placeholder="Plano de Ação..." name="planoacao">
                         <br>
                 </form>
 
@@ -37,21 +48,26 @@
                 <div class="side-logo">
                 <h3> Identificação --> Avaliação --> Controle</h3>
                 <hr>
-                <h6>Identificação dos Perigos:</h6>
+                <h5>Identificação</h5>
                 <ul>
+                        <ul>Descrição</ul>
+                        {% for descricao_perigo in descricao_perigo %}
+                        <li> {{descricao_perigo.id}} - {{descricao_perigo}} </li>
+                        {% endfor %}
+                        <ul>Valor</ul>
                         {% for descricao_perigo in descricao_perigo %}
                         <li> {{descricao_perigo.id}} - {{descricao_perigo}} </li>
                         {% endfor %}
                 </ul>
                 <hr>
-                <h6>Avaliação dos Riscos:</h6>
+                <h5>Avaliação</h5>
                 <ul>
                         {% for funcao in funcao %}
                         <li> {{funcao.id}}</li>
                         {% endfor %}
                 </ul>
                 <hr>
-                <h6>Controle dos Riscos:</h6>
+                <h5>Controle</h5>
                 <ul>
                         {% for risco in riscos %}
                         <li> {{risco.id}} </li>
