@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Empresa, Usuario, Funcao, Tiporisco, Descricaoperigo, Lesoes,Fonterisco, Medidasimplementadas, Tempoexposicao, Inventario, Avaliacaorisco, PlanoAcao, UsuarioInventario, Medidascontrole, Nivelexposicao, Nivelprobabilidade, Nivelgravidade,  Nivelrisco, Classificacaorisco
+from .models import Empresa, Usuario, Funcao, Tiporisco, Descricaoperigo, Lesoes,Fonterisco, Medidasimplementadas, Tempoexposicao, Inventario, Avaliacaorisco, PlanoAcao, UsuarioInventario, UsuarioPlano, Medidascontrole, Nivelexposicao, Nivelprobabilidade, Nivelgravidade,  Nivelrisco, Classificacaorisco
 
 admin.site.register(Empresa)
 admin.site.register(Usuario)
@@ -26,3 +26,4 @@ admin.site.register(Avaliacaorisco)
 admin.site.register(PlanoAcao)
 
 admin.site.register(UsuarioInventario)
+admin.site.register(UsuarioPlano)

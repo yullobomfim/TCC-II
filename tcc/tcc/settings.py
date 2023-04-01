@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'autenticar',
     'empresa',
-    'smart_selects',
+    # 'smart_selects',
 ]
 
 MIDDLEWARE = [

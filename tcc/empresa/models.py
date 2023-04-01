@@ -1501,5 +1501,7 @@ class PlanoAcao(models.Model):
 class UsuarioInventario(models.Model):
     usuario = models.ForeignKey(Usuario, verbose_name=("usuario"), on_delete=models.CASCADE)
     inventario = models.ForeignKey(Inventario, verbose_name=("inventario"), on_delete=models.CASCADE)
-    plano_acao = models.ForeignKey(PlanoAcao, verbose_name=("planoacao"), on_delete=models.CASCADE)
 
+class UsuarioPlano(models.Model):
+    usuario = models.ForeignKey(Usuario, verbose_name=("usuario"), on_delete=models.CASCADE)
+    plano_acao = models.ForeignKey(PlanoAcao, verbose_name=("planoacao"), on_delete=models.CASCADE)
