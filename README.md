@@ -34,24 +34,22 @@ Trabalho de Conclusão de Curso
 ### Plano de ação
 
 
-<<<<<<< HEAD
+
 ## Levantamento de Requisitos de Software
 
 ### Requisitos Funcionais
-=======
-# Levantamento de Requisitos de Software
+## Levantamento de Requisitos de Software
 
 ## Requisitos Funcionais
->>>>>>> 2a22af1b4af0b3eeff1e1697e387c84bac8a3b42
+
 - Todos os usuários devem possuir um cadastro com nome, email e senha.
 - Todos os usuários logados no sistema podem visualizar o seu inventário de riscos.
 - Todos os usuários logados no sistema podem visualizar o seu plano de ação.
 
-<<<<<<< HEAD
+
 ### Requisitos Não-Funcionais
-=======
 ## Requisitos Não-Funcionais
->>>>>>> 2a22af1b4af0b3eeff1e1697e387c84bac8a3b42
+
 - O sistema deve ser acessado com o email e senha.
 - O sistema deve mostrar uma tabela contendo o inventário de riscos dos usuários.
 - O sistema deve mostrar uma tabela contendo o plano de ação dos usuários.
@@ -60,34 +58,26 @@ Trabalho de Conclusão de Curso
 - O preenchimento dos campos do inventário de riscos são obrigatórios.
 - O preenchimento dos campos do plano de ação são obrigatórios.
 
-<<<<<<< HEAD
 ### Front-End
-=======
-# Sistema de Login
 ## *sistema de login e senha*
-- O acesso será validado pelo metodo Authenticate do django, e será realizado digitando o email e senha do usuário.
+- O acesso será validado pelo metodo Authenticate do django, e será realizado digitando o nome e senha do usuário.
 
 ## Front-End
->>>>>>> 2a22af1b4af0b3eeff1e1697e387c84bac8a3b42
 - [x] Html
 - [x] Css
 - [x] Javascript
 - [x] Bootstrap
 
-<<<<<<< HEAD
 ### Back-End
-=======
 ## Back-End
->>>>>>> 2a22af1b4af0b3eeff1e1697e387c84bac8a3b42
 - [x] Python
 - [x] Django
 
 
 ## A aplicação:
+# **Configurações iniciais:**
 
-## **Configurações iniciais:**
-
-Criar o ambiente virtual (Utilizando Máquina Virtual)
+Criar o ambiente virtual (Utilizando máquina virtual)
 
 ```python
 # Criar
@@ -115,25 +105,13 @@ Fazer a instalação das dependências do projeto:
 
 ```python
 pip install -r requirements.txt
-<<<<<<< HEAD
 ```
-
-Criar o ambiente virtual (Utilizando Docker)
-```python
-# Rodar o container do projeto
-	docker-compose up -d
-	
-=======
->>>>>>> 2a22af1b4af0b3eeff1e1697e387c84bac8a3b42
-```
-
 
 ### Algumas ScreenShots
-
-#### Card de Cadastro
-#### Card de Login
-#### Card de Home
-#### Card da Usuario
-#### Card da Empresa
-#### Card de Inventario
-#### Card do Plano de Ação
+## Card de Cadastro
+## Card de Login
+## Card de Home
+## Card da Usuario
+## Card da Empresa
+## Card de Inventario
+## Card do Plano de Ação

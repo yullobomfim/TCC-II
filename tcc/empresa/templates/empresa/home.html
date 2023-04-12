@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href='{% static 'empresa/css/empresa.css' %}' rel='stylesheet'>
 
@@ -15,14 +13,18 @@
                 <div class='header'>
                         <img src="{% static 'usuarios/img/logo-pgr.png' %}" width="52%">
                 </div>
-                
-                <hr>
+        <hr>
                 <h5>Consultar Inventário de Riscos</h5>
-                <hr>
+        <hr>
                 <form action="{% url 'home' %}" method="GET">
                         <button type="text" class="form-control" placeholder="Empresa..." name="empresa">
                         <span>Empresas</span>
                         <br>
+                        <table>
+                                
+
+                        </table>
+                {% comment %} Listar empresas {% endcomment %}
                         {% for empresa in empresas %}
                         <li> {{empresa.nome_empresa}}</li>
                         {% endfor %}
@@ -75,8 +77,8 @@
                         <li> {{risco.id}} </li>
                         {% endfor %}
                 </ul>
-</div>
-<hr>
+        </div>
+                <hr>
                 {% comment %} <a href="{% url 'sair' %}" class="link-float">Sair</a> {% endcomment %}
                 <a href="/accounts/logout" class="link-float" >Logout</a>
         </div>

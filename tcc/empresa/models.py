@@ -963,10 +963,8 @@ class Tiporisco(models.Model):
         ('09.01.001','Ausência de Fator de Risco'),
     )
     
-    
-    
-    choice_tipo_risco = (
-        ('FÍSICOS','FÍSICOS'),
+    choice_tipo_risco = (  
+        ('F','FÍSICOS'),
         ('Q','QUÍMICOS'),
         ('B','BIOLÓGICOS'),
         ('EB','ERGONÔMICOS-BIOMECÂNICOS'),
