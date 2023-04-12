@@ -29,7 +29,7 @@
                         {% endif %}
                         <h2>Login</h2>
                         <hr>
-                        <form action="{% url 'login' %}" method="POST">{% csrf_token %}                            
+                        <form action="{% url 'login' %}" method="POST"> {% csrf_token %}                            
                             <span>Usuario</span>
                             <input type="text" class="form-control" placeholder="Digite seu usuário..." name="nome">
                             <br>
@@ -37,8 +37,10 @@
                             <input type="password" class="form-control" placeholder="Digite sua senha..." name="senha">
 
                             <input type="submit" value="ENTRAR" class="btn-custom-primary">
-                            <a href="{% url 'cadastro' %}" class="link-float">Cadastre-se</a>
+                            <a href="{% url 'home' %}" class="link-float">Cadastre-se</a>
                         </form>
+                            {# Assumes you setup the password_reset view in your URLconf #}
+                            <p><a href="{% url 'password_reset' %}">Esqueceu a senha?</a></p>
                     </div>
                 </div>
 

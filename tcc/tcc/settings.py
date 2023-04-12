@@ -23,9 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'autenticar',
     'empresa',
-    # 'smart_selects',
 ]
 
 MIDDLEWARE = [
@@ -112,3 +110,8 @@ MESSAGE_TAGS = {
 
 #DJANGO SMART SELECTS
 JQUERY_URL = True
+
+
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = '/accounts/login'
+LOGOUT_REDIRECT_URL = '/accounts/login'
