@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="container">
+
+  <h1>Excluir os riscos identificados</h1>
+  <p>Tem certeza que deseja excluir os riscos identificados {{ identificacao_riscos.descricao_perigo }}?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit">Confirmar</button>
+  </form>
+</div>
+  {% endblock %}

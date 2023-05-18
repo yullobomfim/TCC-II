@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg border-bottom navbar-light" style="background-color: #1ca54f;">
+
+    <ul class="navbar-nav nav-text me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'home'%}" >Home</a>
+        </li> 
+        
+        <li class="nav-item dropdown dmenu">
+            {% if user.is_authenticated %}
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Cadastrar</a>
+            <div class="dropdown-menu sm-menu">
+                <a class="dropdown-item" href="/empresa/create">Empresa</a>
+                <a class="dropdown-item" href="/funcao/create">Função</a>
+                <a class="dropdown-item" href="/empregado/create">Empregado</a>
+                <a class="dropdown-item" href="/identificacaorisco/create">Identificação dos Riscos</a>
+                <a class="dropdown-item" href="/tiporisco/create">Tipo Risco</a>
+                <a class="dropdown-item" href="/inventario/create">Inventário</a>
+                <a class="dropdown-item" href="/planoacao/create">Plano de Ação</a>
+                <a class="dropdown-item" href="/avaliacaorisco/create">Avaliação dos Riscos</a>
+                <a class="dropdown-item" href="/identificacaorisco/create">Identificação dos Riscos</a>
+                <a class="dropdown-item" href="/identificacaorisco/create">Identificação dos Riscos</a>
+                <a class="dropdown-item" href="/identificacaorisco/create">Identificação dos Riscos</a>
+                <a class="dropdown-item" href="/identificacaorisco/create">Identificação dos Riscos</a>
+
+            </div>
+            {% endif %}
+        </li>
+        
+        <li class="nav-item dropdown dmenu">
+            {% if user.is_authenticated %}
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Consultar</a>
+            <div class="dropdown-menu sm-menu">
+                <a class="dropdown-item" href="/inventario">Inventário de Riscos</a>
+                <a class="dropdown-item" href="/planoacao">Plano de Ação</a>
+            </div>
+            {% endif %}
+        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/inventario" >Inventário de Riscos </a>
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link" href="/planoacao" >Plano de Ação</a>
+            </li> 
+            <li class="nav-item">
+        
+            <li class="nav-item dropdown dmenu">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Legislações</a>
+            <div class="dropdown-menu sm-menu">
+                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/constituicao/ConstituicaoCompilado.htm">Constituição Federal (CF/88)</a>
+                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/decreto-lei/Del5452compilado.htm">Decreto-Lei 5.452 - Consolidação das Leis do Trabalho (CLT)</a>
+                <a class="dropdown-item" target="blank" href="https://www.gov.br/trabalho-e-previdencia/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/ctpp/normas-regulamentadora/normas-regulamentadoras-vigentes">Portaria 3.214 - Normas Regulamentadoras(NR's)</a>
+                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/leis/l6514.htm">Lei 6.514 - Lei da Segurança e Medicina do Trabalho</a>
+                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/leis/L8213compilado.htm">Lei 8.213 - Planos de Benefícios da Previdência Social</a>
+                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/decreto/d8373.htm">Decreto 8.373 - Instituição do E-social</a>
+            </div>
+        </li>
+    </ul>
+
+
+        <div class="d-flex gap-3 align-items-center">
+            {% if user.is_authenticated %}
+                <span class="nav-text">Bem vindo {{request.user|title}}</span>
+                <a class="btn btn-danger" href="{% url 'logout' %}">Sair</a>
+            {% else %}
+                <a class="btn btn-primary" href="{% url 'signup' %}">Novo</a>
+            {% endif %} 
+        </div>
+</nav>

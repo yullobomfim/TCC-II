@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="container">
+
+  <h1>Plano de Ação</h1>
+  <ul>
+    {% for empresa in empresas %}
+      <li>{{ empresa.nome }}</li>
+    {% empty %}
+      <li>Nenhuma empresa encontrada.</li>
+    {% endfor %}
+  </ul>
+</div>
+  {% endblock %}

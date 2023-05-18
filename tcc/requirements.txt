@@ -1,0 +1,7 @@
+django
+django_extensions
+graphviz-dev
+graphviz
+pygraphviz
+pydotsplus
+django-bootstrap-form

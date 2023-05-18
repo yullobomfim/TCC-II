@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="container">
+  <h1>Lista de Riscos cadastrados</h1>
+  <ul>
+    {% for tiporisco in tiporiscos %}
+      <li>{{ tiporisco.fator_risco }}</li>
+    {% empty %}
+      <li>Nenhum Risco cadastrado.</li>
+    {% endfor %}
+  </ul>
+</div>
+  {% endblock %}

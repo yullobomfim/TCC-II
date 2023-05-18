@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="container">
+
+
+  <div class="side-logo">
+      <div class="table-responsive">
+        <h2> Relação de Funções cadastradas</h2>
+        <hr>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Descrição detalhada</th>
+              <th>CBO</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for funcao in funcoes %}
+              <tr>
+                <td>{{ funcao.nome }}</td>
+                <td>{{ funcao.descricao_detalhada }}</td>
+                <td>{{ funcao.cbo_funcao }}</td>
+
+                {% empty %}
+                <td>Nenhuma Função cadastrada.</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+  </div>
+</div>
+</div>
+
+{% endblock %}

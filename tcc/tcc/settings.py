@@ -13,7 +13,7 @@ SECRET_KEY = '9rmtaq02+a!j$id*8)kd(m%4e_cm@3ohx^dxee0ass(jdwj_+y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1' , 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
@@ -23,7 +23,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
-    'empresa',
+    'django_extensions',
+    'pgr',
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [
@@ -41,7 +43,7 @@ ROOT_URLCONF = 'tcc.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'pgr/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -57,7 +59,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'tcc.wsgi.application'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 # Database
 DATABASES = {
@@ -93,13 +94,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'pgr/static')]
 STATIC_ROOT = os.path.join('static')
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Mensagens de erro
-
 MESSAGE_TAGS = {
     constants.DEBUG: 'alert-primary',
     constants.ERROR: 'alert-danger',
@@ -108,10 +108,8 @@ MESSAGE_TAGS = {
     constants.WARNING: 'alert-warning',
 }
 
-#DJANGO SMART SELECTS
-JQUERY_URL = True
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = 'home'
-LOGIN_URL = '/accounts/login'
-LOGOUT_REDIRECT_URL = '/accounts/login'
+LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'login'
