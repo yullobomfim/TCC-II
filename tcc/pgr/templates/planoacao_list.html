@@ -4,13 +4,41 @@
 {% block content %}
 <div class="container">
 
-  <h1>Plano de Ação</h1>
-  <ul>
-    {% for empresa in empresas %}
-      <li>{{ empresa.nome }}</li>
-    {% empty %}
-      <li>Nenhuma empresa encontrada.</li>
-    {% endfor %}
-  </ul>
+<div class="side-logo">
+  <div class="table-responsive">
+    <h2> Plano de Ação</h2>
+    <hr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>O que</th>
+          <th>Por que</th>
+          <th>Quando</th>
+          <th>Quem</th>
+          <th>Onde</th>
+          <th>Como</th>
+          <th>Quanto</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for plano_acao in planos_acao %}
+        <tr>
+            <td>{{ plano_acao.oque }}</td>
+            <td>{{ plano_acao.porque }}</td>
+            <td>{{ plano_acao.quando }}</td>
+            <td>{{ plano_acao.quem }}</td>
+            <td>{{ plano_acao.onde }}</td>
+            <td>{{ plano_acao.como }}</td>
+            <td>{{ plano_acao.quanto }}</td>
+        {% empty %}
+            <td>Nenhum Plano de Ação cadastrado.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+  </table>
 </div>
-  {% endblock %}
+</div>
+</div>
+</div>
+
+{% endblock %}

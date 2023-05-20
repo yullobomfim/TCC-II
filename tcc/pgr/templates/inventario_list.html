@@ -1,15 +1,77 @@
 {% extends 'base.html' %}
+{% load bootstrap %}
 
 {% block content %}
 <div class="container">
 
-  <h1>Lista de Empresas</h1>
-  <ul>
-    {% for empresa in empresas %}
-      <li>{{ empresa.nome }}</li>
-    {% empty %}
-      <li>Nenhuma empresa encontrada.</li>
-    {% endfor %}
-  </ul>
+  <div class="side-logo">
+      <div class="table-responsive">
+        <h2>Inventário de Riscos</h2>
+        <hr>
+        <h4> Identificação de Perigos</h4>
+        <hr>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Tipo de Risco</th>
+              <th>Descricao do Perigo</th>
+              <th>Descricao da Lesão</th>
+              <th>Fonte de Risco</th>
+              <th>Medidas Implementadas</th>
+              <th>Tempo de Exposicao</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for identificacao_risco in identificacao_riscos %}
+              <tr>
+                <td>{{ identificacao_risco.tipo_risco }}</td>
+                <td>{{ identificacao_risco.descricao_perigo }}</td>
+                <td>{{ identificacao_risco.descricao_lesao }}</td>
+                <td>{{ identificacao_risco.fonte_risco }}</td>
+                <td>{{ identificacao_risco.medidas_implementadas }}</td>
+                <td>{{ identificacao_risco.tempo_exposicao }}</td>
+                {% empty %}
+
+                <td>Nenhum risco identificado.</td>
+          
+              </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+    <hr>
+      <h4> Avaliação de Riscos</h4>
+      <hr>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Tipo Risco</th>
+            <th>Medidas de Controle</th>
+            <th>Nível de Exposição</th>
+            <th>Nível de Probabilidade</th>
+            <th>Nível de Gravidade</th>
+            <th>Nível de Risco</th>
+            <th>Classificação de Risco</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for avaliacaorisco in avaliacaoriscos %}
+            <tr>
+              <td>{{ avaliacaorisco.tipo_risco }}</td>
+              <td>{{ avaliacaorisco.medidas_controle }}</td>
+              <td>{{ avaliacaorisco.nivel_exposicao }}</td>
+              <td>{{ avaliacaorisco.nivel_probabilidade }}</td>
+              <td>{{ avaliacaorisco.nivel_gravidade }}</td>
+              <td>{{ avaliacaorisco.nivel_risco }}</td>
+              <td>{{ avaliacaorisco.classificacao_risco }}</td>
+              {% empty %}
+              <td>Nenhuma Avaliação de Riscos cadastrada.</td>
+            
+          {% endfor %}
+        </tbody>
+</table>
+  </div>
 </div>
-  {% endblock %}
+</div>
+
+{% endblock %}

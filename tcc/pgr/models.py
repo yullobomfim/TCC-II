@@ -1,19 +1,21 @@
+## Imports
 from django.db import models
 from django.contrib.auth.models import User
 
-# Modelos
+## Modelos
+# CADASTRO DO AMBIENTE
 class Empresa(models.Model):
     nome = models.CharField(max_length=100)    
     responsavel = models.CharField(max_length=100)    
     numero_funcionarios = models.IntegerField()
 
     class Meta:
-        verbose_name_plural = "Empresas"
+        verbose_name = "empresa"
+        verbose_name_plural = "empresas"
         ordering = ['nome']
         
     def __str__(self):
         return self.nome
-
 class Funcao(models.Model):
     nome = models.CharField(max_length=50)
     descricao_detalhada = models.TextField()
@@ -23,20 +25,50 @@ class Funcao(models.Model):
         return self.nome
     
     class Meta:
+        verbose_name = "funcao"
         verbose_name_plural = "funcoes"
+        ordering = ['nome']
 
+# CADASTRO EMPREGADO
 class Empregado(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    funcao = models.ForeignKey(Funcao, on_delete=models.CASCADE)
-    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
+    empresa = models.ForeignKey(Empresa, verbose_name=("empresa"), on_delete=models.CASCADE)
+    funcao = models.ForeignKey(Funcao, verbose_name=("funcao"), on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.user} - {self.funcao}"
     class Meta:
+        verbose_name = "empregado"
         verbose_name_plural = "empregados"
+        ordering = ['user']
 
+# IDENTIFICAÇÃO DOS RISCOS DO AMBIENTE
 class Tiporisco(models.Model):    
-    choice_riscos = (
+    choice_tiporisco = (  
+        ('FÍSICOS','FÍSICOS'),
+        ('QUÍMICOS','QUÍMICOS'),
+        ('BIOLÓGICOS','BIOLÓGICOS'),
+        ('ERGONÔMICOS-BIOMECÂNICOS','ERGONÔMICOS-BIOMECÂNICOS'),
+        ('ERGONÔMICOS-MOBILIÁRIO E EQUIPAMENTOS','ERGONÔMICOS-MOBILIÁRIO E EQUIPAMENTOS'),
+        ('ERGONÔMICOS-ORGANIZACIONAIS','ERGONÔMICOS-ORGANIZACIONAIS'),
+        ('ERGONÔMICOS-AMBIENTAIS','ERGONÔMICOS-AMBIENTAIS'),
+        ('ERGONÔMICOS-PSICOSSOCIAIS/COGNITIVOS','ERGONÔMICOS-PSICOSSOCIAIS/COGNITIVOS'),
+        ('MECÂNICOS/ACIDENTES','MECÂNICOS/ACIDENTES'),
+        ('PERIGOSOS','PERIGOSOS'),
+        ('ASSOCIAÇÃO DE FATORES DE RISCO','ASSOCIAÇÃO DE FATORES DE RISCO'),
+        ('OUTROS FATORES DE RISCO','OUTROS FATORES DE RISCO'),
+        ('AUSÊNCIA DE FATORES DE RISCO','AUSÊNCIA DE FATORES DE RISCO'),  
+    )
+    tipo_risco = models.CharField(max_length=250, choices=choice_tiporisco)
+    
+    def __str__(self):
+        return self.tipo_risco
+    class Meta:
+        verbose_name = "tipo_risco"
+        verbose_name_plural = "tipo_riscos"
+        ordering = ['tipo_risco']
+class Descricaoperigo(models.Model):
+    choice_perigo = (
         ('Infrassom e sons de baixa frequência','Infrassom e sons de baixa frequência'),
         ('Ruído contínuo ou intermitente (legislação previdenciária','Ruído contínuo ou intermitente (legislação previdenciária)'),
         ('Ruído impulsivo ou de impacto','Ruído impulsivo ou de impacto'),
@@ -912,40 +944,17 @@ class Tiporisco(models.Model):
         ('Umidade','Umidade'),
         ('Ausência de Fator de Risco','Ausência de Fator de Risco'),
     )
-    
-    choice_tipo_risco = (  
-        ('FÍSICOS','FÍSICOS'),
-        ('QUÍMICOS','QUÍMICOS'),
-        ('BIOLÓGICOS','BIOLÓGICOS'),
-        ('ERGONÔMICOS-BIOMECÂNICOS','ERGONÔMICOS-BIOMECÂNICOS'),
-        ('ERGONÔMICOS-MOBILIÁRIO E EQUIPAMENTOS','ERGONÔMICOS-MOBILIÁRIO E EQUIPAMENTOS'),
-        ('ERGONÔMICOS-ORGANIZACIONAIS','ERGONÔMICOS-ORGANIZACIONAIS'),
-        ('ERGONÔMICOS-AMBIENTAIS','ERGONÔMICOS-AMBIENTAIS'),
-        ('ERGONÔMICOS-PSICOSSOCIAIS/COGNITIVOS','ERGONÔMICOS-PSICOSSOCIAIS/COGNITIVOS'),
-        ('MECÂNICOS/ACIDENTES','MECÂNICOS/ACIDENTES'),
-        ('PERIGOSOS','PERIGOSOS'),
-        ('ASSOCIAÇÃO DE FATORES DE RISCO','ASSOCIAÇÃO DE FATORES DE RISCO'),
-        ('OUTROS FATORES DE RISCO','OUTROS FATORES DE RISCO'),
-        ('AUSÊNCIA DE FATORES DE RISCO','AUSÊNCIA DE FATORES DE RISCO'),  
-    )
 
-    tipo_risco = models.CharField(max_length=2500, choices=choice_tipo_risco)
-    fator_risco = models.CharField(max_length=2500, choices=choice_riscos)
-    
-    def __str__(self):
-        return self.fator_risco
-    class Meta:
-        verbose_name_plural = "tiposderiscos"
-
-class Descricaoperigo(models.Model):
-    descricao_perigo = models.CharField(max_length=2500)
+    tipo_risco = models.ForeignKey(Tiporisco, on_delete=models.CASCADE)
+    descricao_perigo = models.CharField(max_length=250, choices=choice_perigo)
 
     def __str__(self):
-        return self.descricao_perigo
-        
-    class Meta:
-        verbose_name_plural = "Tipos de Perigo"
+        return f"{self.tipo_risco} - {self.descricao_perigo}"
 
+    class Meta:
+        verbose_name = "descricao_perigo"
+        verbose_name_plural = "descricao_perigos"
+        ordering = ['descricao_perigo']
 class Lesoes(models.Model):
     choice_lesao = (
             ('Lesão imediata','Lesão imediata'),
@@ -978,16 +987,16 @@ class Lesoes(models.Model):
             ('Lesões múltiplas','Lesões múltiplas'),
             ('Outras lesões, NIC','Outras lesões, NIC'),
     )
-        
     descricao_lesao = models.CharField(max_length=2000, choices=choice_lesao)
+
     def __str__(self):
         return self.descricao_lesao
     
     class Meta:
-        verbose_name_plural = "Tipos de Lesão"
-
+        verbose_name = "lesao"
+        verbose_name_plural = "lesoes"
+        ordering = ['descricao_lesao']
 class Fonterisco(models.Model):
-    
     choice_fonte = (
         ('Impacto de pessoa contra objeto parado. Aplica-se a casos em que a lesão foi produzida por impacto da pessoa acidentada contra a fonte da lesão, tendo sido o movimento que produziu o contato originalmente o da pessoa e não o da fonte da lesão, exceto quando o movimento do acidentado tiver sido provocado por queda. Inclui casos de alguém chocar-se contra alguma coisa, tropeçar em alguma coisa, ser empurrado ou projetado contra alguma coisa, etc. Não inclui casos de salto para nível inferior','Impacto de pessoa contra objeto parado. Aplica-se a casos em que a lesão foi produzida por impacto da pessoa acidentada contra a fonte da lesão, tendo sido o movimento que produziu o contato originalmente o da pessoa e não o da fonte da lesão, exceto quando o movimento do acidentado tiver sido provocado por queda. Inclui casos de alguém chocar-se contra alguma coisa, tropeçar em alguma coisa, ser empurrado ou projetado contra alguma coisa, etc. Não inclui casos de salto para nível inferior.'),
         ('Impacto de pessoa contra objeto em movimento. Aplica-se a casos em que a lesão foi produzida por impacto da pessoa acidentada contra a fonte da lesão, tendo sido o movimento que produziu o contato originalmente o da pessoa e não o da fonte da lesão, exceto quando o movimento do acidentado tiver sido provocado por queda. Inclui casos de alguém chocar-se contra alguma coisa, tropeçar em alguma coisa, ser empurrado ou projetado contra alguma coisa, etc. Não inclui casos de salto para nível inferior','Impacto de pessoa contra objeto em movimento. Aplica-se a casos em que a lesão foi produzida por impacto da pessoa acidentada contra a fonte da lesão, tendo sido o movimento que produziu o contato originalmente o da pessoa e não o da fonte da lesão, exceto quando o movimento do acidentado tiver sido provocado por queda. Inclui casos de alguém chocar-se contra alguma coisa, tropeçar em alguma coisa, ser empurrado ou projetado contra alguma coisa, etc. Não inclui casos de salto para nível inferior.'),
@@ -1049,55 +1058,51 @@ class Fonterisco(models.Model):
         ('Tipo, NIC','Tipo, NIC'),
         ('Tipo inexistente','Tipo inexistente'),
     )
-    
     fonte_risco = models.CharField(max_length=2500, choices=choice_fonte)
     
     def __str__(self):
         return self.fonte_risco
-    
     class Meta:
-
-        verbose_name_plural = "Fontes de Risco"
-
+        verbose_name = "fonte_risco"
+        verbose_name_plural = "fonte_riscos"
+        ordering = ['fonte_risco']
 class Medidasimplementadas(models.Model):
     medidas_implementadas = models.CharField(max_length=200)
+    
     def __str__(self):
         return self.medidas_implementadas
+    
     class Meta:
-        verbose_name_plural = "Medidas Implementadas"
-
+        verbose_name = "medida_implementada"
+        verbose_name_plural = "medidas_implementadas"
+        ordering = ['medidas_implementadas']
 class Tempoexposicao(models.Model):
-    
-    HH0 = '0'
-    HH1 = '1'
-    HH2 = '2'
-    HH3 = '3'
-    HH4 = '4'
-                    
     choice_exposicao = (
-        (HH0,'Até 1 hora por dia'),
-        (HH1,'Até 2 horas por dia'),
-        (HH2,'Até 4 horas por dia'),
-        (HH3,'Até 6 horas por dia'),
-        (HH4,'Até 8 horas por dia'),
+        ('Até 1 hora por dia','Até 1 hora por dia'),
+        ('Até 2 horas por dia','Até 2 horas por dia'),
+        ('Até 4 horas por dia','Até 4 horas por dia'),
+        ('Até 6 horas por dia','Até 6 horas por dia'),
+        ('Até 8 horas por dia','Até 8 horas por dia'),
         )
-    
     tempo_exposicao = models.CharField(max_length=200, choices=choice_exposicao)
+    
     def __str__(self):
         return self.tempo_exposicao
+    
     class Meta:
-        verbose_name_plural = "Tempos de exposição"
+        verbose_name = "tempo_exposicao"
+        verbose_name_plural = "tempos_exposicao"
+        ordering = ['tempo_exposicao']
 
+#  AVALIAÇÃO DOS RISCOS DO AMBIENTE
 class Medidascontrole(models.Model):
-    
     choice_medidas_controle = (
-        ('A','Aceitável'),
-        ('I','Ineficiente'),
-        ('D','Deficiente'),
-        ('MD','Muito Deficiente'),
-        ('DT','Deficiência Total'),
+        ('Aceitável','Aceitável'),
+        ('Ineficiente','Ineficiente'),
+        ('Deficiente','Deficiente'),
+        ('Muito Deficiente','Muito Deficiente'),
+        ('Deficiência Total','Deficiência Total'),
         )
-    
     choice_nmc = (
         ('1','1'),
         ('2','2'),
@@ -1105,39 +1110,37 @@ class Medidascontrole(models.Model):
         ('10','10'),
         ('14','14'),
         )
-    
     choice_significado = (
-        ('1','Não Foram detectadas anomalias'),
-        ('1','O perigo está controlado'),
-        ('2','Foram detectados fatores de risco de menor importancia'),
-        ('2','O dano pode ocorrer algumas vezes'),
-        ('6','Foram detectados alguns fatores de risco significativos'),
-        ('6','As medidas preventivas existentes tem sua eficávia reduzida'),
-        ('10','Foram detectados fatores de risco significativos'),
-        ('10','As medidas preventivas existentes são ineficazes'),
-        ('10','O dano ocorerá na maior parte das circunstâncias'),
-        ('14','Medidas preventivas inexistentes ou desadequadas'),
-        ('14','São esperados danos na maior parte das situações'),
+        ('Não Foram detectadas anomalias','Não Foram detectadas anomalias'),
+        ('O perigo está controlado','O perigo está controlado'),
+        ('Foram detectados fatores de risco de menor importancia','Foram detectados fatores de risco de menor importancia'),
+        ('O dano pode ocorrer algumas vezes','O dano pode ocorrer algumas vezes'),
+        ('Foram detectados alguns fatores de risco significativos','Foram detectados alguns fatores de risco significativos'),
+        ('As medidas preventivas existentes tem sua eficávia reduzida','As medidas preventivas existentes tem sua eficávia reduzida'),
+        ('Foram detectados fatores de risco significativos','Foram detectados fatores de risco significativos'),
+        ('As medidas preventivas existentes são ineficazes','As medidas preventivas existentes são ineficazes'),
+        ('O dano ocorerá na maior parte das circunstâncias','O dano ocorerá na maior parte das circunstâncias'),
+        ('Medidas preventivas inexistentes ou desadequadas','Medidas preventivas inexistentes ou desadequadas'),
+        ('São esperados danos na maior parte das situações','São esperados danos na maior parte das situações'),
         )
 
-    
-    medidas_controle = models.CharField(max_length=200, choices=choice_medidas_controle)
+    medida_controle = models.CharField(max_length=200, choices=choice_medidas_controle)
     nmc = models.CharField(max_length=200, choices=choice_nmc)
     significado = models.CharField(max_length=200, choices=choice_significado)
     def __str__(self):
-        return self.significado
+        return f"{self.medida_controle} - {self.significado}"
     class Meta:
-        verbose_name_plural = "Medidas de Controle"
-
+        verbose_name = "medida_controle"
+        verbose_name_plural = "medida_controles"
+        ordering = ['nmc']
 class Nivelexposicao(models.Model):
     choice_nivel_exposicao = (
-    ('E','Exporádica'),
-    ('P','Pouco Frequente'),
-    ('O','Ocasional'),
-    ('F','Frequente'),
-    ('C','Continuada'),
+    ('Exporádica','Exporádica'),
+    ('Pouco Frequente','Pouco Frequente'),
+    ('Ocasional','Ocasional'),
+    ('Frequente','Frequente'),
+    ('Continuada','Continuada'),
     )
-    
     choice_ne = (
         ('1','1'),
         ('2','2'),
@@ -1145,33 +1148,32 @@ class Nivelexposicao(models.Model):
         ('4','4'),
         ('5','5'),
         )
-
     choice_significado = (
-        ('1','Uma vez por ano, por pouco tempo(minutos)'),
-        ('2','Algumas vezes por ano e por período de tempo determinado'),
-        ('3','Algumas vezes por mês'),
-        ('4','Várias vezes durante o período laboral, ainda que com tempos curtos'),
-        ('4','Várias vezes por semana ou diário'),
-        ('5','Várias vezes por dia com tempo prolongado ou continuamente'),
+        ('Uma vez por ano, por pouco tempo(minutos)','Uma vez por ano, por pouco tempo(minutos)'),
+        ('Algumas vezes por ano e por período de tempo determinado','Algumas vezes por ano e por período de tempo determinado'),
+        ('Algumas vezes por mês','Algumas vezes por mês'),
+        ('Várias vezes durante o período laboral, ainda que com tempos curtos','Várias vezes durante o período laboral, ainda que com tempos curtos'),
+        ('Várias vezes por semana ou diário','Várias vezes por semana ou diário'),
+        ('Várias vezes por dia com tempo prolongado ou continuamente','Várias vezes por dia com tempo prolongado ou continuamente'),
         )
 
     nivel_exposicao = models.CharField(max_length=200, choices=choice_nivel_exposicao)
     ne = models.CharField(max_length=200, choices=choice_ne)
     significado = models.CharField(max_length=200, choices=choice_significado)
     def __str__(self):
-        return self.significado
+        return f"{self.nivel_exposicao} - {self.significado}"
     class Meta:
-        verbose_name_plural = "Níveis de Exposição"
-
+        verbose_name = "nivel_exposicao"
+        verbose_name_plural = "nivel_exposicaos"
+        ordering = ['ne']
 class Nivelprobabilidade(models.Model):
     choice_nivel_probabilidade = (
-    ('MB','Muito Baixa'),
-    ('PF','Pouco Frequente'),
-    ('M','Média'),
-    ('A','Alta'),
-    ('MA','Muito Alta'),
+    ('Muito Baixa','Muito Baixa'),
+    ('Pouco Frequente','Pouco Frequente'),
+    ('Média','Média'),
+    ('Alta','Alta'),
+    ('Muito Alta','Muito Alta'),
     )
-    
     choice_np = (
         ('1','1 a 3'),
         ('4','4 a 6'),
@@ -1179,33 +1181,33 @@ class Nivelprobabilidade(models.Model):
         ('24','24 a 30'),
         ('40','40 a 70'),
         )
-    
     choice_significado = (
-        ('1','Não é de se esperar que a situação perigosa se materialize, ainda que possa ser concebida'),
-        ('4','A materialização da situação perigosa pode ocorrer'),
-        ('8','A materialização da situação perigosa é passível de ocorrer pelo menos uma vez com danos'),
-        ('24','A materizalização da situação perigosa pode ocorrer várias vezes durante o peródo de trabalho'),
-        ('40','Normalmente a materizalização da situação perigosa ocorre com frequência'),
+        ('Não é de se esperar que a situação perigosa se materialize, ainda que possa ser concebida','Não é de se esperar que a situação perigosa se materialize, ainda que possa ser concebida'),
+        ('A materialização da situação perigosa pode ocorrer','A materialização da situação perigosa pode ocorrer'),
+        ('A materialização da situação perigosa é passível de ocorrer pelo menos uma vez com danos','A materialização da situação perigosa é passível de ocorrer pelo menos uma vez com danos'),
+        ('A materizalização da situação perigosa pode ocorrer várias vezes durante o peródo de trabalho','A materizalização da situação perigosa pode ocorrer várias vezes durante o peródo de trabalho'),
+        ('Normalmente a materizalização da situação perigosa ocorre com frequência','Normalmente a materizalização da situação perigosa ocorre com frequência'),
         )
 
-    
     nivel_probabilidade = models.CharField(max_length=200, choices=choice_nivel_probabilidade)
     np = models.CharField(max_length=200, choices=choice_np)
     significado = models.CharField(max_length=200, choices=choice_significado)
-    def __str__(self):
-        return self.significado
-    class Meta:
-        verbose_name_plural = "Níveis de Probabilidade"
 
+    def __str__(self):
+        return f"{self.nivel_probabilidade} - {self.significado}"
+
+    class Meta:
+        verbose_name = "nivel_probabilidade"
+        verbose_name_plural = "nivel_probabilidades"
+        ordering = ['np']
 class Nivelgravidade(models.Model):
     choice_nivel_gravidade = (
-    ('I','Insignificante'),
-    ('L','Leve'),
-    ('M','Moderado'),
-    ('G','Grave'),
-    ('M','Mortal'),
+    ('Insignificante','Insignificante'),
+    ('Leve','Leve'),
+    ('Moderado','Moderado'),
+    ('Grave','Grave'),
+    ('Mortal','Mortal'),
     )
-    
     choice_ng = (
         ('10','10'),
         ('25','25'),
@@ -1213,13 +1215,12 @@ class Nivelgravidade(models.Model):
         ('90','90'),
         ('155','155'),
         )
-
     choice_significado = (
-        ('10','Não há danos pessoais'),
-        ('25','Pequenas lesões que não requerem hospitalização. Apenas primeiros socorros'),
-        ('60','Lesões com incapacidade transitória. REquerem tratamento médico'),
-        ('90','Lesões graves que podem ser irreparáveis'),
-        ('155','Morte ou incapacidade permanente'),
+        ('Não há danos pessoais','Não há danos pessoais'),
+        ('Pequenas lesões que não requerem hospitalização. Apenas primeiros socorros','Pequenas lesões que não requerem hospitalização. Apenas primeiros socorros'),
+        ('Lesões com incapacidade transitória. REquerem tratamento médico','Lesões com incapacidade transitória. REquerem tratamento médico'),
+        ('Lesões graves que podem ser irreparáveis','Lesões graves que podem ser irreparáveis'),
+        ('Morte ou incapacidade permanente','Morte ou incapacidade permanente'),
         )
 
     nivel_gravidade = models.CharField(max_length=200, choices=choice_nivel_gravidade)
@@ -1227,30 +1228,20 @@ class Nivelgravidade(models.Model):
     significado = models.CharField(max_length=200, choices=choice_significado)
 
     def __str__(self):
-        return self.significado
-    class Meta:
-        verbose_name_plural = "Níveis de Gravidade"    
-
-class Nivelrisco(models.Model):
-    ng = models.ForeignKey(Nivelgravidade, on_delete=models.CASCADE)
-    np = models.ForeignKey(Nivelprobabilidade, on_delete=models.CASCADE)
-    nivel_risco = models.CharField(max_length=50)
+        return f"{self.nivel_gravidade} - {self.significado}"
     
-    def __str__(self):
-        return self.nivel_risco
     class Meta:
-        verbose_name_plural = "Níveis de Risco" 
-
+        verbose_name = "nivel_gravidade"
+        verbose_name_plural = "nivel_gravidades"
+        ordering = ['ng']
 class Classificacaorisco(models.Model):
-
     choice_classificacao_risco = (
-    ('C','Crítico'),
-    ('A','Alto'),
-    ('M','Moderado'),
-    ('B','Baixo'),
-    ('I','Irrelevante'),
+    ('Crítico','Crítico'),
+    ('Alto','Alto'),
+    ('Moderado','Moderado'),
+    ('Baixo','Baixo'),
+    ('Irrelevante','Irrelevante'),
     )
-    
     choice_nr = (
         ('10850','3360 a 10850'),
         ('3100','1240 a 3100'),
@@ -1258,17 +1249,16 @@ class Classificacaorisco(models.Model):
         ('300','90 a 300'),
         ('80','10 a 80'),
         )
-
     choice_significado = (
-        ('10850','Situação CRITÍCA'),
-        ('10850','Intervenção imediata'),
-        ('10850','Isolar o perigo até serem adaptadas às medidas de controle'),
-        ('3100','Situação a CORRIGIR'),
-        ('3100','Adaptar medidas de controle enquanto a situação perigosa não for eliminada ou reduzida'),
-        ('1200','Situação a MELHORAR'),
-        ('1200','Deverão ser elaborados planos, programas ou procedimentos, documentados de intervenção'),
-        ('300','MELHORAR SE POSSÍVEL, justificando a intervenção'),
-        ('80','Intervir apenas se uma análise mais pormenorizada o justificar'),
+        ('Situação CRITÍCA','Situação CRITÍCA'),
+        ('Intervenção imediata','Intervenção imediata'),
+        ('Isolar o perigo até serem adaptadas às medidas de controle','Isolar o perigo até serem adaptadas às medidas de controle'),
+        ('Situação a CORRIGIR','Situação a CORRIGIR'),
+        ('Adaptar medidas de controle enquanto a situação perigosa não for eliminada ou reduzida','Adaptar medidas de controle enquanto a situação perigosa não for eliminada ou reduzida'),
+        ('Situação a MELHORAR','Situação a MELHORAR'),
+        ('Deverão ser elaborados planos, programas ou procedimentos, documentados de intervenção','Deverão ser elaborados planos, programas ou procedimentos, documentados de intervenção'),
+        ('MELHORAR SE POSSÍVEL, justificando a intervenção','MELHORAR SE POSSÍVEL, justificando a intervenção'),
+        ('Intervir apenas se uma análise mais pormenorizada o justificar','Intervir apenas se uma análise mais pormenorizada o justificar'),
         )
 
     nr = models.CharField(max_length=200, choices=choice_nr)
@@ -1276,49 +1266,72 @@ class Classificacaorisco(models.Model):
     significado = models.CharField(max_length=200, choices=choice_significado)
     
     def __str__(self):
-        return self.significado
+        return f"{self.classificacao_risco} - {self.significado}"
+    
     class Meta:
-        verbose_name_plural = "Classificação de Riscos"
+        verbose_name = "classificacao_risco"
+        verbose_name_plural = "classificacao_riscos"
+        ordering = ['classificacao_risco']
+class Nivelrisco(models.Model):
+    ng = models.ForeignKey(Nivelgravidade, on_delete=models.CASCADE)
+    np = models.ForeignKey(Nivelprobabilidade, on_delete=models.CASCADE)
+    classificacao_risco = models.ForeignKey(Classificacaorisco, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f"{self.ng} - {self.classificacao_risco}"
 
-## Tabelas do Inventário de Riscos
+    class Meta:
+        verbose_name = "nivel_risco"
+        verbose_name_plural = "nivel_riscos" 
+        ordering = ['classificacao_risco']
 
+## INVENTÁRIO DA FUNÇÃO
+# IDENTIFICAÇÃO
 class Identificacaorisco(models.Model):
-    tipo_risco = models.ForeignKey(Tiporisco, verbose_name=("tipo_risco"), on_delete=models.CASCADE)
-    descricao_perigo = models.ForeignKey(Descricaoperigo, verbose_name=("descricao_perigo"), on_delete=models.CASCADE)
-    descricao_lesao = models.ForeignKey(Lesoes, verbose_name=("lesoes"), on_delete=models.CASCADE)
+    funcao = models.ForeignKey(Funcao, verbose_name=("funcao"), on_delete=models.CASCADE)
+    descricao_perigo = models.ForeignKey(Descricaoperigo, verbose_name= ("descricao_perigo"), on_delete=models.CASCADE)
+    descricao_lesao = models.ForeignKey(Lesoes, verbose_name=("lesao"), on_delete=models.CASCADE)
     fonte_risco = models.ForeignKey(Fonterisco, verbose_name=("fonte"), on_delete=models.CASCADE)
     medidas_implementadas = models.ForeignKey(Medidasimplementadas, verbose_name=("medidas"), on_delete=models.CASCADE)
     tempo_exposicao = models.ForeignKey(Tempoexposicao, verbose_name=("exposicao"), on_delete=models.CASCADE)
     
     def __str__(self):
-        return str(self.descricao_perigo)
+        return f"{self.funcao} - {self.descricao_perigo}"
     
     class Meta:
-        verbose_name_plural = "identificacaoriscos"
-
+        verbose_name = "identificacao_risco"
+        verbose_name_plural = "identificacao_riscos"
+        ordering = ['funcao']
+# AVALIAÇÃO
 class Avaliacaorisco(models.Model):
-    tipo_risco = models.ForeignKey(Tiporisco, verbose_name=("tipo_risco"), on_delete=models.CASCADE)
+    descricao_perigo = models.ForeignKey(Descricaoperigo, verbose_name= ("descricao_perigo"), on_delete=models.CASCADE)
+    classificacao_risco = models.ForeignKey(Classificacaorisco, verbose_name=('classificacao_risco'), on_delete=models.CASCADE)
     medidas_controle = models.ForeignKey(Medidascontrole, verbose_name=('medidas_controle'), on_delete=models.CASCADE)
     nivel_exposicao = models.ForeignKey(Nivelexposicao, verbose_name=('nivel_exposicao'), on_delete=models.CASCADE)
     nivel_probabilidade = models.ForeignKey(Nivelprobabilidade, verbose_name=('nivel_probabilidade'), on_delete=models.CASCADE)
     nivel_gravidade = models.ForeignKey(Nivelgravidade, verbose_name=('nivel_gravidade'), on_delete=models.CASCADE)
-    nivel_risco = models.ForeignKey(Nivelrisco, verbose_name=('nivel_risco'), on_delete=models.CASCADE)
-    classificacao_risco = models.ForeignKey(Classificacaorisco, verbose_name=('classificacao_risco'), on_delete=models.CASCADE)
     
     def __str__(self):
-        return str(self.classificacao_risco)
-    
-    class Meta:
-        verbose_name_plural = "Avaliações de Risco"
+        return f"{self.descricao_perigo} - {self.classificacao_risco}"
 
+    class Meta:
+        verbose_name = "avaliacao_risco"
+        verbose_name_plural = "avaliacao_riscos"
+        ordering = ['descricao_perigo']
+# INVENTÁRIO (IDENTIFICACAO+AVALIACAO)
 class Inventario(models.Model):
     identificacao_risco = models.ForeignKey(Identificacaorisco, verbose_name=("identificacao_risco"), on_delete=models.CASCADE)
     avaliacao_risco = models.ForeignKey(Avaliacaorisco, verbose_name=("avaliacao_risco"), on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return str(self.identificacao_risco)
+
     class Meta:
-        verbose_name_plural = "inventarioderiscos"
+        verbose_name = "inventario"
+        verbose_name_plural = "inventarios"
+        ordering = ['avaliacao_risco']
 
-
-## Tabelas do Plano de Ação
+## PLANO DE AÇÃO
 class Planoacao(models.Model):
     inventario = models.ForeignKey(Inventario, verbose_name=("inventario"), on_delete=models.CASCADE)
     oque = models.CharField(max_length=1000)
@@ -1333,20 +1346,33 @@ class Planoacao(models.Model):
         return str(self.oque)
     
     class Meta:
-        verbose_name_plural = "planosdeacao"
+        verbose_name = "plano_acao"
+        verbose_name_plural = "planos_acao"
+        ordering = ['inventario']
 
-# Gravação dos registros    
-
+## CONTROLE DOS RISCOS
+#  INVENTÁRIO DO EMPREGADO
 class Empregadoinventario(models.Model):
     empregado = models.ForeignKey(Empregado, verbose_name=("empregado"), on_delete=models.CASCADE)
     inventario = models.ForeignKey(Inventario, verbose_name=("inventario"), on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f"{self.empregado} - {self.inventario}"
+
     class Meta:
-        verbose_name_plural = "empregadosinventario"
-
-
+        verbose_name = "empregadoinventario"
+        verbose_name_plural = "empregadosinventarios"
+        ordering = ['empregado']
+# PLANO DE AÇÃO DO EMPREGADO
 class Empregadoplano(models.Model):
     empregado = models.ForeignKey(Empregado, verbose_name=("empregado"), on_delete=models.CASCADE)
     plano_acao = models.ForeignKey(Planoacao, verbose_name=("plano_acao"), on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.empregado} - {self.plano_acao}"
+
+
     class Meta:
-        verbose_name_plural = "empregadosplanosdeacao"
+        verbose_name = "empregadoplano"
+        verbose_name_plural = "empregadosplanos"
+        ordering = ['empregado']

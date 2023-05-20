@@ -4,13 +4,13 @@
 {% block content %}
 <div class="container">
   <div class="side-logo">
-      <div class="side-logo">
-          <h2> Identificação dos Riscos</h2>
+      <div class="table-responsive">
+          <h2> Identificação de Perigos</h2>
           <hr>
-          <table class="table-striped">
+          <table class="table">
             <thead>
               <tr>
-                <th>Tipo do Risco</th>
+                <th>Função</th>
                 <th>Descricao do Perigo</th>
                 <th>Descricao da Lesão</th>
                 <th>Fonte de Risco</th>
@@ -19,23 +19,22 @@
               </tr>
             </thead>
             <tbody>
-              {% for identificacaorisco in identificacaoriscos %}
-                <tr>
-                  <td>{{ identificacaorisco.tipo_risco }}</td>
-                  <td>{{ identificacaorisco.descricao_perigo }}</td>
-                  <td>{{ identificacaorisco.descricao_lesao }}</td>
-                  <td>{{ identificacaorisco.fonte_risco }}</td>
-                  <td>{{ identificacaorisco.medidas_implementadas }}</td>
-                  <td>{{ identificacaorisco.tempo_exposicao }}</td>
-                  {% empty %}
-
+              {% for identificacao_risco in identificacao_riscos %}
+              <tr>
+                  <td>{{ identificacao_risco.funcao }}</td>
+                  <td>{{ identificacao_risco.descricao_perigo }}</td>
+                  <td>{{ identificacao_risco.descricao_lesao }}</td>
+                  <td>{{ identificacao_risco.fonte_risco }}</td>
+                  <td>{{ identificacao_risco.medidas_implementadas }}</td>
+                  <td>{{ identificacao_risco.tempo_exposicao }}</td>
+              {% empty %}
                   <td>Nenhum risco identificado.</td>
-            
                 </tr>
               {% endfor %}
             </tbody>
         </table>
     </div>
+  </div>
 </div>
 </div>
 

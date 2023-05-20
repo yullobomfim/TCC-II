@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="container">
+
+
+  <div class="side-logo">
+      <div class="table-responsive">
+        <h2> Acompanhamento de Plano de Ação</h2>
+        <hr>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Plano de Ação</th>
+                <th>Empregado</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for empregadosplano in empregadosplanos %}
+                <tr>
+                  <td>{{ empregadosplano.plano_acao }}</td>
+                  <td>{{ empregadosplano.empregado }}</td>
+                  {% empty %}
+                  <td>Nenhum Plano de Ação x Empregado cadastrado.</td>
+                
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+{% endblock %}

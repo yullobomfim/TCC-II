@@ -1,16 +1,11 @@
-from django.contrib import messages
-from django.core.paginator import Paginator
-from django.shortcuts import render,redirect, get_object_or_404
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login, logout
-
-from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import EmpresaForm, EmpregadoForm, FuncaoForm, TiporiscoForm, Descricaoperigo, DescricaoperigoForm, LesoesForm,FonteriscoForm, MedidasimplementadasForm, TempoexposicaoForm, InventarioForm, AvaliacaoriscoForm, PlanoacaoForm, EmpregadoinventarioForm, EmpregadoplanoForm, MedidascontroleForm, NivelexposicaoForm, NivelprobabilidadeForm, NivelgravidadeForm,  NivelriscoForm, ClassificacaoriscoForm, IdentificacaoriscoForm
+from .models import Empresa, Funcao, Tiporisco, Empregado, Inventario, Identificacaorisco, Planoacao , Empregadoinventario, Empregadoplano, Avaliacaorisco 
 from django.urls import reverse_lazy
-from .forms import EmpresaForm, EmpregadoForm, FuncaoForm, TiporiscoForm, DescricaoperigoForm, LesoesForm,FonteriscoForm, MedidasimplementadasForm, TempoexposicaoForm, InventarioForm, AvaliacaoriscoForm, PlanoacaoForm, EmpregadoinventarioForm, EmpregadoplanoForm, MedidascontroleForm, NivelexposicaoForm, NivelprobabilidadeForm, NivelgravidadeForm,  NivelriscoForm, ClassificacaoriscoForm, IdentificacaoriscoForm
-from .models import Empresa, Funcao, Tiporisco, Empregado, Inventario, Identificacaorisco, Planoacao
 
 # Create your views here.
 @login_required
@@ -26,7 +21,7 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
- 
+
 # Views para o CRUD Empregado
 class EmpregadoListView(ListView):
     model = Empregado
@@ -91,7 +86,7 @@ class FuncaoDeleteView(DeleteView):
 class TiporiscoListView(ListView):
     model = Tiporisco
     template_name = 'tiporisco_list.html'
-    context_object_name = 'tiporiscos'
+    context_object_name = 'tiposderiscos'
 class TiporiscoCreateView(CreateView):
     model = Tiporisco
     form_class = TiporiscoForm
@@ -107,108 +102,149 @@ class TiporiscoDeleteView(DeleteView):
     template_name = 'tiporisco_delete.html'
     success_url = reverse_lazy('tiporisco_list')
 
-# Views para o CRUD Plano de Ação
-class PlanoacaoListView(ListView):
-    model = Planoacao
-    template_name = 'planoacao_list.html'
-    context_object_name = 'planoacao'
-
-class PlanoacaoCreateView(CreateView):
-    model = Planoacao
-    form_class = PlanoacaoForm
-    template_name = 'planoacao_create.html'
-    success_url = reverse_lazy('planoacao_list')
-
-class PlanoacaoUpdateView(UpdateView):
-    model = Planoacao
-    form_class = PlanoacaoForm
-    template_name = 'planoacao_update.html'
-    success_url = reverse_lazy('planoacao_list')
-
-class PlanoacaoDeleteView(DeleteView):
-    model = Planoacao
-    template_name = 'planoacao_delete.html'
-    success_url = reverse_lazy('planoacao_list')
+# Views para o CRUD Tipo Risco
+class DescricaoperigoListView(ListView):
+    model = Descricaoperigo
+    template_name = 'descricaoperigo_list.html'
+    context_object_name = 'descricao_perigos'
+class DescricaoperigoCreateView(CreateView):
+    model = Descricaoperigo
+    form_class = DescricaoperigoForm
+    template_name = 'descricaoperigo_create.html'
+    success_url = reverse_lazy('descricaoperigo_list')
+class DescricaoperigoUpdateView(UpdateView):
+    model = Descricaoperigo
+    form_class = DescricaoperigoForm
+    template_name = 'descricaoperigo_update.html'
+    success_url = reverse_lazy('descricaoperigo_list')
+class DescricaoperigoDeleteView(DeleteView):
+    model = Descricaoperigo
+    template_name = 'descricaoperigo_delete.html'
+    success_url = reverse_lazy('descricaoperigo_list')
 
 
 # Views para o CRUD Identificação de Riscos
 class IdentificacaoriscoListView(ListView):
     model = Identificacaorisco
     template_name = 'identificacaorisco_list.html'
-    context_object_name = 'identificacaorisco'
-
+    context_object_name = 'identificacao_riscos'
 class IdentificacaoriscoCreateView(CreateView):
     model = Identificacaorisco
     form_class = IdentificacaoriscoForm
     template_name = 'identificacaorisco_create.html'
     success_url = reverse_lazy('identificacaorisco_list')
-
 class IdentificacaoriscoUpdateView(UpdateView):
     model = Identificacaorisco
     form_class = IdentificacaoriscoForm
     template_name = 'identificacaorisco_update.html'
     success_url = reverse_lazy('identificacaorisco_list')
-
 class IdentificacaoriscoDeleteView(DeleteView):
     model = Identificacaorisco
     template_name = 'identificacaorisco_delete.html'
     success_url = reverse_lazy('identificacaorisco_list')
 
+# Views para o CRUD Avaliação de Riscos
+class AvaliacaoriscoListView(ListView):
+    model = Avaliacaorisco
+    template_name = 'avaliacaorisco_list.html'
+    context_object_name = 'avaliacao_riscos'
+class AvaliacaoriscoCreateView(CreateView):
+    model = Avaliacaorisco
+    form_class = AvaliacaoriscoForm
+    template_name = 'avaliacaorisco_create.html'
+    success_url = reverse_lazy('avaliacaorisco_list')
+class AvaliacaoriscoUpdateView(UpdateView):
+    model = Avaliacaorisco
+    form_class = AvaliacaoriscoForm
+    template_name = 'avaliacaorisco_update.html'
+    success_url = reverse_lazy('avaliacaorisco_list')
+class AvaliacaoriscoDeleteView(DeleteView):
+    model = Avaliacaorisco
+    template_name = 'avaliacaorisco_delete.html'
+    success_url = reverse_lazy('avaliacaorisco_list')
 
 
 # Views para o CRUD Inventário
 class InventarioListView(ListView):
     model = Inventario
     template_name = 'inventario_list.html'
-    context_object_name = 'inventario'
-
+    context_object_name = 'inventarios'
 class InventarioCreateView(CreateView):
     model = Inventario
     form_class = InventarioForm
     template_name = 'inventario_create.html'
     success_url = reverse_lazy('inventario_list')
-
 class InventarioUpdateView(UpdateView):
     model = Inventario
     form_class = InventarioForm
     template_name = 'inventario_update.html'
     success_url = reverse_lazy('inventario_list')
-
 class InventarioDeleteView(DeleteView):
     model = Inventario
     template_name = 'inventario_delete.html'
     success_url = reverse_lazy('inventario_list')
 
 
+# Views para o CRUD Plano de Ação
+class PlanoacaoListView(ListView):
+    model = Planoacao
+    template_name = 'planoacao_list.html'
+    context_object_name = 'planos_acao'
+class PlanoacaoCreateView(CreateView):
+    model = Planoacao
+    form_class = PlanoacaoForm
+    template_name = 'planoacao_create.html'
+    success_url = reverse_lazy('planoacao_list')
+class PlanoacaoUpdateView(UpdateView):
+    model = Planoacao
+    form_class = PlanoacaoForm
+    template_name = 'planoacao_update.html'
+    success_url = reverse_lazy('planoacao_list')
+class PlanoacaoDeleteView(DeleteView):
+    model = Planoacao
+    template_name = 'planoacao_delete.html'
+    success_url = reverse_lazy('planoacao_list')
 
 
+# Views para o CRUD  Empregado x Inventário
+class EmpregadoinventarioListView(ListView):
+    model = Empregadoinventario
+    template_name = 'empregadoinventario_list.html'
+    context_object_name = 'empregadosinventarios'
+class EmpregadoinventarioCreateView(CreateView):
+    model = Empregadoinventario
+    form_class = EmpregadoinventarioForm
+    template_name = 'empregadoinventario_create.html'
+    success_url = reverse_lazy('empregadoinventario_list')
+class EmpregadoinventarioUpdateView(UpdateView):
+    model = Empregadoinventario
+    form_class = EmpregadoinventarioForm
+    template_name = 'empregadoinventario_update.html'
+    success_url = reverse_lazy('empregadoinventario_list')
+class EmpregadoinventarioDeleteView(DeleteView):
+    model = Empregadoinventario
+    template_name = 'empregadoinventario_delete.html'
+    success_url = reverse_lazy('empregadoinventario_list')
 
 
-def Descricaoperigo(request):
-    pass
-def Lesoes(request):
-    pass
-def Fonterisco(request):
-    pass
-def Medidasimplementadas(request):
-    pass
-def Tempoexposicao(request):
-    pass
-def Avaliacaorisco(request):
-    pass
-def Medidascontrole(request):
-    pass
-def Nivelexposicao(request):
-    pass
-def Nivelprobabilidade(request):
-    pass
-def Nivelgravidade(request):
-    pass
-def Nivelrisco(request):
-    pass
-def Classificacaorisco(request):
-    pass
-def Empregadoinventario(request):
-    pass
-def Empregadoplano(request):
-    pass
+# Views para o CRUD  Empregado x Plano de Ação
+class EmpregadoplanoListView(ListView):
+    model = Empregadoplano
+    template_name = 'empregadoplano_list.html'
+    context_object_name = 'empregadosplanos'
+class EmpregadoplanoCreateView(CreateView):
+    model = Empregadoplano
+    form_class = EmpregadoplanoForm
+    template_name = 'empregadoplano_create.html'
+    success_url = reverse_lazy('empregadoplano_list')
+class EmpregadoplanoUpdateView(UpdateView):
+    model = Empregadoplano
+    form_class = EmpregadoplanoForm
+    template_name = 'empregadoplano_update.html'
+    success_url = reverse_lazy('empregadoplano_list')
+class EmpregadoplanoDeleteView(DeleteView):
+    model = Empregadoplano
+    template_name = 'empregadoplano_delete.html'
+    success_url = reverse_lazy('empregadoplano_list')
+
+

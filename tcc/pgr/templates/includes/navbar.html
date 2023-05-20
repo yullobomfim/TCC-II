@@ -6,58 +6,81 @@
         </li> 
         
         <li class="nav-item dropdown dmenu">
-            {% if user.is_authenticated %}
+{% comment %} Verificação de autenticação SUPERUSER {% endcomment %}
+            {% if user.is_superuser %}
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Cadastrar</a>
             <div class="dropdown-menu sm-menu">
+                <a class="dropdown-item" href="/empregado/create">Empregado</a>
                 <a class="dropdown-item" href="/empresa/create">Empresa</a>
                 <a class="dropdown-item" href="/funcao/create">Função</a>
-                <a class="dropdown-item" href="/empregado/create">Empregado</a>
-                <a class="dropdown-item" href="/identificacaorisco/create">Identificação dos Riscos</a>
                 <a class="dropdown-item" href="/tiporisco/create">Tipo Risco</a>
+                <a class="dropdown-item" href="/descricaoperigo/create">Descrição Perigo</a>
+                <a class="dropdown-item" href="/identificacaorisco/create">Identificação de Perigos</a>
+                <a class="dropdown-item" href="/avaliacaorisco/create">Avaliação de Riscos</a>
+                <a class="dropdown-item" href="/planoacao/create">Controle dos Riscos</a>
                 <a class="dropdown-item" href="/inventario/create">Inventário</a>
                 <a class="dropdown-item" href="/planoacao/create">Plano de Ação</a>
-                <a class="dropdown-item" href="/avaliacaorisco/create">Avaliação dos Riscos</a>
-                <a class="dropdown-item" href="/identificacaorisco/create">Identificação dos Riscos</a>
-                <a class="dropdown-item" href="/identificacaorisco/create">Identificação dos Riscos</a>
-                <a class="dropdown-item" href="/identificacaorisco/create">Identificação dos Riscos</a>
-                <a class="dropdown-item" href="/identificacaorisco/create">Identificação dos Riscos</a>
-
+                <a class="dropdown-item" href="/empregadoinventario/create">Inventário de Riscos x Empregado</a>
+                <a class="dropdown-item" href="/empregadoplano/create">Plano de Ação x Empregado </a>
             </div>
             {% endif %}
         </li>
         
         <li class="nav-item dropdown dmenu">
-            {% if user.is_authenticated %}
+            {% if user.is_superuser %}
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Consultar</a>
             <div class="dropdown-menu sm-menu">
-                <a class="dropdown-item" href="/inventario">Inventário de Riscos</a>
-                <a class="dropdown-item" href="/planoacao">Plano de Ação</a>
+                <a class="dropdown-item" href="/empregado">Empregado</a>
+                <a class="dropdown-item" href="/empresa">Empresa</a>
+                <a class="dropdown-item" href="/funcao">Função</a>
+                <a class="dropdown-item" href="/tiporisco">Tipo Risco</a>
+                <a class="dropdown-item" href="/descricaoperigo">Descrição Perigo</a>
+                <a class="dropdown-item" href="/identificacaorisco">Identificação de Perigos</a>
+                <a class="dropdown-item" href="/avaliacaorisco">Avaliação dos Riscos</a>
+                <a class="dropdown-item" href="/planoacao">Controle dos Riscos</a>
+                <a class="dropdown-item" href="/empregadoinventario">Inventário de Riscos x Empregado</a>
+                <a class="dropdown-item" href="/empregadoplano">Plano de Ação x Empregado </a>
             </div>
             {% endif %}
         </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/inventario" >Inventário de Riscos </a>
-            </li> 
-            <li class="nav-item">
-                <a class="nav-link" href="/planoacao" >Plano de Ação</a>
-            </li> 
-            <li class="nav-item">
+{% comment %} Verificação de autenticação  {% endcomment %}
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown dmenu">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Gerenciamento de Riscos Ocupacionais (GRO)</a>
+            <div class="dropdown-menu sm-menu">
+                <a class="dropdown-item" href="/identificacaorisco">Identificação de Perigos</a>
+                <a class="dropdown-item" href="/avaliacaorisco">Avaliação dos Riscos</a>
+                <a class="dropdown-item" href="/planoacao">Controle dos Riscos</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown dmenu">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Programa de Gerenciamento de Riscos (PGR)</a>
+            <div class="dropdown-menu sm-menu">
+                <a class="dropdown-item" href="/empregadoinventario">Inventario de Riscos</a>
+                <a class="dropdown-item" href="/planoacao">Plano de Ação</a>
+            </div>
+        </li>
+        {% endif %}
+        <li class="nav-item">
         
             <li class="nav-item dropdown dmenu">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Legislações</a>
             <div class="dropdown-menu sm-menu">
-                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/constituicao/ConstituicaoCompilado.htm">Constituição Federal (CF/88)</a>
-                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/decreto-lei/Del5452compilado.htm">Decreto-Lei 5.452 - Consolidação das Leis do Trabalho (CLT)</a>
-                <a class="dropdown-item" target="blank" href="https://www.gov.br/trabalho-e-previdencia/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/ctpp/normas-regulamentadora/normas-regulamentadoras-vigentes">Portaria 3.214 - Normas Regulamentadoras(NR's)</a>
-                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/leis/l6514.htm">Lei 6.514 - Lei da Segurança e Medicina do Trabalho</a>
-                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/leis/L8213compilado.htm">Lei 8.213 - Planos de Benefícios da Previdência Social</a>
-                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/decreto/d8373.htm">Decreto 8.373 - Instituição do E-social</a>
+                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/constituicao/ConstituicaoCompilado.htm">Constituição Federal (CF)</a>
+                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/decreto-lei/Del5452compilado.htm">Consolidação das Leis do Trabalho (CLT)</a>
+                <a class="dropdown-item" target="blank" href="https://www.gov.br/trabalho-e-previdencia/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/ctpp/normas-regulamentadora/normas-regulamentadoras-vigentes">Normas Regulamentadoras (NRs)</a>
+                <a class="dropdown-item" target="blank" href="https://www.gov.br/fundacentro/pt-br/centrais-de-conteudo/biblioteca/nhos">Normas de Higiene Ocupacional (NHO)</a>
+                <a class="dropdown-item" target="blank" href="https://www.gov.br/fundacentro/pt-br/centrais-de-conteudo/biblioteca/recomendacoes-tecnicas-de-procedimentos-rtps">Recomendações Técnicas de Procedimentos (RTPs)</a>
+                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/leis/l6514.htm">Lei da Segurança e Medicina do Trabalho</a>
+                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/leis/L8213compilado.htm">Planos de Benefícios da Previdência Social</a>
+                <a class="dropdown-item" target="blank" href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/decreto/d8373.htm">Instituição do E-social</a>
             </div>
         </li>
     </ul>
 
 
         <div class="d-flex gap-3 align-items-center">
+{% comment %} Verificação de autenticação  {% endcomment %}
             {% if user.is_authenticated %}
                 <span class="nav-text">Bem vindo {{request.user|title}}</span>
                 <a class="btn btn-danger" href="{% url 'logout' %}">Sair</a>

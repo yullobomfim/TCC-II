@@ -112,7 +112,7 @@ pip install -r requirements.txt
 - [x] Django
 
 ## Criar os diagramas utilizando o graph_models:
-python manage.py graph_models -a -o myapp_models.png
+python manage.py graph_models -a -o pgr_models.png
 
 
 ### Algumas ScreenShots

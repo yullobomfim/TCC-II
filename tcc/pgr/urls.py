@@ -2,7 +2,7 @@ from django.urls import path, include
 from . import views
 from .views import (
     home,
-    
+    signup,
     EmpresaListView,
     EmpresaCreateView,
     EmpresaUpdateView,
@@ -17,6 +17,11 @@ from .views import (
     IdentificacaoriscoCreateView,
     IdentificacaoriscoUpdateView,
     IdentificacaoriscoDeleteView,
+    
+    AvaliacaoriscoListView,
+    AvaliacaoriscoCreateView,
+    AvaliacaoriscoUpdateView,
+    AvaliacaoriscoDeleteView,
 
     EmpregadoListView,
     EmpregadoCreateView,
@@ -28,23 +33,33 @@ from .views import (
     TiporiscoUpdateView,
     TiporiscoDeleteView,
 
+    DescricaoperigoListView,
+    DescricaoperigoCreateView,
+    DescricaoperigoUpdateView,
+    DescricaoperigoDeleteView,
+
     InventarioListView,
     InventarioCreateView,
     InventarioUpdateView,
     InventarioDeleteView,
 
+    EmpregadoinventarioListView,
+    EmpregadoinventarioCreateView,
+    EmpregadoinventarioUpdateView,
+    EmpregadoinventarioDeleteView,
+
+    EmpregadoplanoListView,
+    EmpregadoplanoCreateView,
+    EmpregadoplanoUpdateView,
+    EmpregadoplanoDeleteView,
+
     PlanoacaoListView,
     PlanoacaoCreateView,
     PlanoacaoUpdateView,
     PlanoacaoDeleteView,
-
-
-
-
 )
     # urls.py
 urlpatterns = [
-    
     path('', views.home, name='home'),
     path('signup/', views.signup, name='signup'),
     
@@ -62,6 +77,11 @@ urlpatterns = [
     path('tiporisco/create/', TiporiscoCreateView.as_view(), name='tiporisco_create'),
     path('tiporisco/update/<int:pk>/', TiporiscoUpdateView.as_view(), name='tiporisco_update'),
     path('tiporisco/delete/<int:pk>/', TiporiscoDeleteView.as_view(), name='tiporisco_delete'),
+
+    path('descricaoperigo/', DescricaoperigoListView.as_view(), name='descricaoperigo_list'),
+    path('descricaoperigo/create/', DescricaoperigoCreateView.as_view(), name='descricaoperigo_create'),
+    path('descricaoperigo/update/<int:pk>/', DescricaoperigoUpdateView.as_view(), name='descricaoperigo_update'),
+    path('descricaoperigo/delete/<int:pk>/', DescricaoperigoDeleteView.as_view(), name='descricaoperigo_delete'),
 
     path('empregado/', EmpregadoListView.as_view(), name='empregado_list'),
     path('empregado/create/', EmpregadoCreateView.as_view(), name='empregado_create'),
@@ -82,5 +102,21 @@ urlpatterns = [
     path('identificacaorisco/create/', IdentificacaoriscoCreateView.as_view(), name='identificacaorisco_create'),
     path('identificacaorisco/update/<int:pk>/', IdentificacaoriscoUpdateView.as_view(), name='identificacaorisco_update'),
     path('identificacaorisco/delete/<int:pk>/', IdentificacaoriscoDeleteView.as_view(), name='identificacaorisco_delete'),
+
+    path('avaliacaorisco/', AvaliacaoriscoListView.as_view(), name='avaliacaorisco_list'),
+    path('avaliacaorisco/create/', AvaliacaoriscoCreateView.as_view(), name='avaliacaorisco_create'),
+    path('avaliacaorisco/update/<int:pk>/', AvaliacaoriscoUpdateView.as_view(), name='avaliacaorisco_update'),
+    path('avaliacaorisco/delete/<int:pk>/', AvaliacaoriscoDeleteView.as_view(), name='avaliacaorisco_delete'),
+    
+    path('empregadoinventario/', EmpregadoinventarioListView.as_view(), name='empregadoinventario_list'),
+    path('empregadoinventario/create/', EmpregadoinventarioCreateView.as_view(), name='empregadoinventario_create'),
+    path('empregadoinventario/update/<int:pk>/', EmpregadoinventarioUpdateView.as_view(), name='empregadoinventario_update'),
+    path('empregadoinventario/delete/<int:pk>/', EmpregadoinventarioDeleteView.as_view(), name='empregadoinventario_delete'),
+    
+    path('empregadoplano/', EmpregadoplanoListView.as_view(), name='empregadoplano_list'),
+    path('empregadoplano/create/', EmpregadoplanoCreateView.as_view(), name='empregadoplano_create'),
+    path('empregadoplano/update/<int:pk>/', EmpregadoplanoUpdateView.as_view(), name='empregadoplano_update'),
+    path('empregadoplano/delete/<int:pk>/', EmpregadoplanoDeleteView.as_view(), name='empregadoplano_delete'),    
+    
 
 ]

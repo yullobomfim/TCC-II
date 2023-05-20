@@ -1,7 +1,7 @@
 django
 django_extensions
-graphviz-dev
-graphviz
-pygraphviz
-pydotsplus
+# graphviz
+# libgraphviz-dev
+# pygraphviz
+# pydotsplus
 django-bootstrap-form

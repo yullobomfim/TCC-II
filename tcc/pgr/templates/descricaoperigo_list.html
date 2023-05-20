@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="container">
+
+  <div class="side-logo">
+      <div class="table-responsive">
+        <h2> Descrição dos Perigos</h2>
+        <hr>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Descrição do Perigo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for descricao_perigo in descricao_perigos %}
+              <tr>
+                <td>{{ descricao_perigo.descricao_perigo }}</td>
+            {% empty %}
+                <td>Nenhum Tipo Risco cadastrado.</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+  </div>
+</div>
+</div>
+
+{% endblock %}

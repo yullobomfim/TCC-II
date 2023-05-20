@@ -4,8 +4,8 @@
 {% block content %}
 <div class="container">
 
-  <h1>Excluir Empresa</h1>
-  <p>Tem certeza que deseja excluir a empresa "{{ empresa.nome }}"?</p>
+  <h1>Excluir Plano de Ação</h1>
+  <p>Tem certeza que deseja excluir o plano de ação "{{ planos_acao.oque }}"?</p>
   <form method="post">
     {% csrf_token %}
     <button class="btn btn-danger" type="submit">Confirmar</button>

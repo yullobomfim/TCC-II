@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="container">
+
+
+  <h1>Editar Plano de Ação x Empregado</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form|bootstrap }}
+    <button class="btn btn-primary" type="submit">Salvar</button>
+  </form>
+</div>
+  {% endblock %}

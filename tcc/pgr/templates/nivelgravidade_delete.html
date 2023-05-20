@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="container">
+
+  <h1>Excluir Empregado</h1>
+  <p>Tem certeza que deseja excluir o Empregado "{{ empregado.user }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit">Confirmar</button>
+  </form>
+</div>
+  {% endblock %}
