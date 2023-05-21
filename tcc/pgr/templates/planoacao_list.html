@@ -18,6 +18,8 @@
           <th>Onde</th>
           <th>Como</th>
           <th>Quanto</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -30,6 +32,13 @@
             <td>{{ plano_acao.onde }}</td>
             <td>{{ plano_acao.como }}</td>
             <td>{{ plano_acao.quanto }}</td>
+            {% if user.is_superuser %}
+            <td>
+              <a class="btn btn-primary" href="/planoacao/update/{{plano_acao.id}}/">Editar</a>
+              <a class="btn btn-danger" href="/planoacao/delete/{{plano_acao.id}}/">Apagar</a>
+            </td>
+            {% endif %}
+
         {% empty %}
             <td>Nenhum Plano de Ação cadastrado.</td>
           </tr>

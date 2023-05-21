@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg border-bottom navbar-light" style="background-color: #1ca54f;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1ca54f;">
 
     <ul class="navbar-nav nav-text me-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -13,15 +13,12 @@
                 <a class="dropdown-item" href="/empregado/create">Empregado</a>
                 <a class="dropdown-item" href="/empresa/create">Empresa</a>
                 <a class="dropdown-item" href="/funcao/create">Função</a>
-                <a class="dropdown-item" href="/tiporisco/create">Tipo Risco</a>
                 <a class="dropdown-item" href="/descricaoperigo/create">Descrição Perigo</a>
                 <a class="dropdown-item" href="/identificacaorisco/create">Identificação de Perigos</a>
                 <a class="dropdown-item" href="/avaliacaorisco/create">Avaliação de Riscos</a>
                 <a class="dropdown-item" href="/planoacao/create">Controle dos Riscos</a>
-                <a class="dropdown-item" href="/inventario/create">Inventário</a>
-                <a class="dropdown-item" href="/planoacao/create">Plano de Ação</a>
-                <a class="dropdown-item" href="/empregadoinventario/create">Inventário de Riscos x Empregado</a>
-                <a class="dropdown-item" href="/empregadoplano/create">Plano de Ação x Empregado </a>
+                <a class="dropdown-item" href="/empregadoinventario/create">Inventário de Riscos</a>
+                <a class="dropdown-item" href="/empregadoplano/create">Plano de Ação</a>
             </div>
             {% endif %}
         </li>
@@ -33,13 +30,12 @@
                 <a class="dropdown-item" href="/empregado">Empregado</a>
                 <a class="dropdown-item" href="/empresa">Empresa</a>
                 <a class="dropdown-item" href="/funcao">Função</a>
-                <a class="dropdown-item" href="/tiporisco">Tipo Risco</a>
                 <a class="dropdown-item" href="/descricaoperigo">Descrição Perigo</a>
                 <a class="dropdown-item" href="/identificacaorisco">Identificação de Perigos</a>
                 <a class="dropdown-item" href="/avaliacaorisco">Avaliação dos Riscos</a>
                 <a class="dropdown-item" href="/planoacao">Controle dos Riscos</a>
-                <a class="dropdown-item" href="/empregadoinventario">Inventário de Riscos x Empregado</a>
-                <a class="dropdown-item" href="/empregadoplano">Plano de Ação x Empregado </a>
+                <a class="dropdown-item" href="/empregadoinventario">Inventário de Riscos</a>
+                <a class="dropdown-item" href="/empregadoplano">Plano de Ação</a>
             </div>
             {% endif %}
         </li>
@@ -62,7 +58,6 @@
         </li>
         {% endif %}
         <li class="nav-item">
-        
             <li class="nav-item dropdown dmenu">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Legislações</a>
             <div class="dropdown-menu sm-menu">
@@ -79,10 +74,10 @@
     </ul>
 
 
-        <div class="d-flex gap-3 align-items-center">
+        <div class="d-flex gap-3 align-items-center" style="margin-right: 30px">
 {% comment %} Verificação de autenticação  {% endcomment %}
             {% if user.is_authenticated %}
-                <span class="nav-text">Bem vindo {{request.user|title}}</span>
+                <span class="btn btn-light">Bem vindo {{request.user|title}}</span>
                 <a class="btn btn-danger" href="{% url 'logout' %}">Sair</a>
             {% else %}
                 <a class="btn btn-primary" href="{% url 'signup' %}">Novo</a>

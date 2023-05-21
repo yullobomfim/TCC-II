@@ -5,10 +5,12 @@
 <div class="container">
 
   <h1>Excluir Tipo Risco</h1>
-  <p>Tem certeza que deseja excluir o tipo risco "{{ tiposrisco.fator_risco }}"?</p>
+  <p>Tem certeza que deseja excluir o tipo risco </p>
+  <p> {{ tiposderisco.descricao_perigo }}?</p>
   <form method="post">
     {% csrf_token %}
-    <button class="btn btn-danger" type="submit">Confirmar</button>
+    <button class="btn btn-danger" type="submit">Apagar</button>
+    <a class="btn btn-warning" href="/tiporisco/">Voltar</a>
   </form>
 </div>
   {% endblock %}

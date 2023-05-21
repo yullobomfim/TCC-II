@@ -18,7 +18,8 @@
                 <th>Nível de Probabilidade</th>
                 <th>Nível de Gravidade</th>
                 <th>Classificação de Risco</th>
-
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -30,6 +31,12 @@
                   <td>{{ avaliacao_risco.nivel_probabilidade }}</td>
                   <td>{{ avaliacao_risco.nivel_gravidade }}</td>
                   <td>{{ avaliacao_risco.classificacao_risco }}</td>
+                  <td>
+                    {% if user.is_superuser %}
+                    <a class="btn btn-primary" href="/avaliacaorisco/update/{{avaliacao_risco.id}}/">Editar</a>
+                    <a class="btn btn-danger" href="/avaliacaorisco/delete/{{avaliacao_risco.id}}/">Apagar</a>
+                    {% endif %}
+                  </td>
                   {% empty %}
                   <td>Nenhuma Avaliação de Riscos cadastrada.</td>
                 

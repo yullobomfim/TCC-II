@@ -8,7 +8,8 @@
   <p>Tem certeza que deseja excluir{{ empregadosplanos.empregado }} - {{ empregadosplanos.plano_acao}}"?</p>
   <form method="post">
     {% csrf_token %}
-    <button class="btn btn-danger" type="submit">Confirmar</button>
+    <button class="btn btn-danger" type="submit">Apagar</button>
+    <a class="btn btn-warning" href="/empregadoplano">Voltar</a>
   </form>
 </div>
   {% endblock %}

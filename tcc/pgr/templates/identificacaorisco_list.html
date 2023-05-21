@@ -16,6 +16,8 @@
                 <th>Fonte de Risco</th>
                 <th>Medidas Implementadas</th>
                 <th>Tempo de Exposicao</th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -27,6 +29,12 @@
                   <td>{{ identificacao_risco.fonte_risco }}</td>
                   <td>{{ identificacao_risco.medidas_implementadas }}</td>
                   <td>{{ identificacao_risco.tempo_exposicao }}</td>
+                  <td>
+                    {% if user.is_superuser %}
+                    <a class="btn btn-primary" href="/identificacaorisco/update/{{identificacao_risco.id}}/">Editar</a>
+                    <a class="btn btn-danger" href="/identificacaorisco/delete/{{identificacao_risco.id}}/">Apagar</a>
+                    {% endif %}
+                  </td>
               {% empty %}
                   <td>Nenhum risco identificado.</td>
                 </tr>

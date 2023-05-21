@@ -22,16 +22,15 @@
             </tr>
           </thead>
           <tbody>
-            {% for identificacao_risco in identificacao_riscos %}
+                {% for identificacao_risco in identificacao_riscos %}
               <tr>
-                <td>{{ identificacao_risco.tipo_risco }}</td>
+                <td>{{ identificacao_risco.funcao }}</td>
                 <td>{{ identificacao_risco.descricao_perigo }}</td>
                 <td>{{ identificacao_risco.descricao_lesao }}</td>
                 <td>{{ identificacao_risco.fonte_risco }}</td>
                 <td>{{ identificacao_risco.medidas_implementadas }}</td>
                 <td>{{ identificacao_risco.tempo_exposicao }}</td>
                 {% empty %}
-
                 <td>Nenhum risco identificado.</td>
           
               </tr>

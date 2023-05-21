@@ -5,10 +5,12 @@
 <div class="container">
 
   <h1>Excluir Identificação de Riscos</h1>
-  <p>Tem certeza que deseja excluir o inventário de riscos "{{ inventario.identificacao_riscos }}"?</p>
+  <p>Tem certeza que deseja excluir o inventário de riscos  </p>
+  <p> {{ inventario.identificacao_riscos }}?</p>
   <form method="post">
     {% csrf_token %}
-    <button class="btn btn-danger" type="submit">Confirmar</button>
+    <button class="btn btn-danger" type="submit">Apagar</button>
+    <a class="btn btn-warning" href="/inventario">Voltar</a>
   </form>
 </div>
   {% endblock %}

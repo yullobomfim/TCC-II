@@ -15,7 +15,10 @@
               <th>Nome</th>
               <th>Responsável</th>
               <th>Número de funcionários</th>
+              <th></th>
+              <th></th>
             </tr>
+
           </thead>
           <tbody>
             {% for empresa in empresas %}
@@ -23,6 +26,10 @@
                 <td>{{ empresa.nome }}</td>
                 <td>{{ empresa.responsavel }}</td>
                 <td>{{ empresa.numero_funcionarios }}</td>
+                <td>
+                  <a class="btn btn-primary" href="/empresa/update/{{empresa.id}}/">Editar</a>
+                  <a class="btn btn-danger" href="/empresa/delete/{{empresa.id}}/">Apagar</a>
+                </td>
 
                 {% empty %}
                 <td>Nenhuma Empresa cadastrada.</td>

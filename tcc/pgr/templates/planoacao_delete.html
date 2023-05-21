@@ -5,10 +5,12 @@
 <div class="container">
 
   <h1>Excluir Plano de Ação</h1>
-  <p>Tem certeza que deseja excluir o plano de ação "{{ planos_acao.oque }}"?</p>
+  <p>Tem certeza que deseja excluir o plano de ação  </p>
+  <p> {{ planos_acao.oque }}?</p>
   <form method="post">
     {% csrf_token %}
-    <button class="btn btn-danger" type="submit">Confirmar</button>
+    <button class="btn btn-danger" type="submit">Apagar</button>
+    <a class="btn btn-warning" href="/planos_Acao/">Voltar</a>
   </form>
 </div>
   {% endblock %}

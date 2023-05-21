@@ -5,10 +5,12 @@
 <div class="container">
 
   <h1>Excluir Perigos</h1>
-  <p>Tem certeza que deseja excluir o Perigo "{{ tiposdeperigo.descricao_perigo }}"?</p>
+  <p>Tem certeza que deseja excluir o Perigo:</p>
+  <p> "{{ descricaoperigo.descricao_perigo }}?</p>
   <form method="post">
     {% csrf_token %}
-    <button class="btn btn-danger" type="submit">Confirmar</button>
+    <button class="btn btn-danger" type="submit">Apagar</button>
+    <a class="btn btn-warning" href="/descricaoperigo">Voltar</a>
   </form>
 </div>
   {% endblock %}

@@ -6,14 +6,17 @@
 
   <div class="side-logo">
       <div class="table-responsive">
-        <h2> Relação de funções cadastradas</h2>
+        <h2> Funções cadastradas</h2>
         <hr>
         <table class="table">
           <thead>
             <tr>
               <th>Nome</th>
-              <th>Descrição detalhada</th>
+              <th>Descrição Detalhada</th>
               <th>CBO</th>
+              <th></th>
+              <th></th>
+              
             </tr>
           </thead>
           <tbody>
@@ -22,6 +25,10 @@
                 <td>{{ funcao.nome }}</td>
                 <td>{{ funcao.descricao_detalhada }}</td>
                 <td>{{ funcao.cbo_funcao }}</td>
+                <td>
+                  <a class="btn btn-primary" href="/funcao/update/{{funcao.id}}/">Editar</a>
+                  <a class="btn btn-danger" href="/funcao/delete/{{funcao.id}}/">Apagar</a>
+                </td>
 
                 {% empty %}
                 <td>Nenhuma Função cadastrada.</td>

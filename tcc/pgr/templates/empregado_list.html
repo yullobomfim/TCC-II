@@ -15,6 +15,8 @@
                 <th>Nome</th>
                 <th>Função</th>
                 <th>Empresa</th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -23,6 +25,13 @@
                   <td>{{ empregado.user }}</td>
                   <td>{{ empregado.funcao }}</td>
                   <td>{{ empregado.empresa }}</td>
+                  <td>
+                    <a class="btn btn-primary" href="/empregado/update/{{empregado.id}}/">Editar</a>
+                    <a class="btn btn-danger" href="/empregado/delete/{{empregado.id}}/">Apagar</a>
+                  </td>
+                  <td>
+                    {% comment %} <a class="btn btn-danger" href="{% url 'empregado/delete/{{empregado.user.id}}' %}">Apagar</a> {% endcomment %}
+                  </td>
                   {% empty %}
                   <td>Nenhum Empregado cadastrado.</td>
                 

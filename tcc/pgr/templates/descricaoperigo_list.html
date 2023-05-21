@@ -12,14 +12,21 @@
           <thead>
             <tr>
               <th>Descrição do Perigo</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {% for descricao_perigo in descricao_perigos %}
               <tr>
                 <td>{{ descricao_perigo.descricao_perigo }}</td>
+                <td>
+                  <a class="btn btn-primary" href="/descricaoperigo/update/{{descricao_perigo.id}}/">Editar</a>
+                  <a class="btn btn-danger" href="/descricaoperigo/delete/{{descricao_perigo.id}}/">Apagar</a>
+                </td>
+
             {% empty %}
-                <td>Nenhum Tipo Risco cadastrado.</td>
+                <td>Nenhum Perigo cadastrado.</td>
               </tr>
             {% endfor %}
           </tbody>

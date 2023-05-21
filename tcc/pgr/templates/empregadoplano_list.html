@@ -19,8 +19,10 @@
             <tbody>
               {% for empregadosplano in empregadosplanos %}
                 <tr>
+                  {% if user.is_superuser %}
                   <td>{{ empregadosplano.plano_acao }}</td>
                   <td>{{ empregadosplano.empregado }}</td>
+                  {% endif %}
                   {% empty %}
                   <td>Nenhum Plano de Ação x Empregado cadastrado.</td>
                 

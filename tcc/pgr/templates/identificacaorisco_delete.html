@@ -4,11 +4,13 @@
 {% block content %}
 <div class="container">
 
-  <h1>Excluir os riscos identificados</h1>
-  <p>Tem certeza que deseja excluir os riscos identificados {{ identificacao_riscos.descricao_perigo }}?</p>
+  <h1>Excluir os riscos</h1>
+  <p>Tem certeza que deseja excluir os riscos identificados </p>
+  <p> {{ identificacaorisco.descricao_perigo }}?</p>
   <form method="post">
     {% csrf_token %}
-    <button class="btn btn-danger" type="submit">Confirmar</button>
+    <button class="btn btn-danger" type="submit">Apagar</button>
+    <a class="btn btn-warning" href="/identificacaorisco/">Voltar</a>
   </form>
 </div>
   {% endblock %}

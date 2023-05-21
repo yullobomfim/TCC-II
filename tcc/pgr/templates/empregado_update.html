@@ -4,12 +4,12 @@
 {% block content %}
 <div class="container">
 
-
   <h1>Editar Empregado</h1>
   <form method="post">
     {% csrf_token %}
     {{ form|bootstrap }}
-    <button class="btn btn-primary" type="submit">Salvar</button>
+    <button class="btn btn-primary" type="submit">Alterar</button>
+    <a class="btn btn-danger" href="/empregado/">Voltar</a>
   </form>
 </div>
   {% endblock %}

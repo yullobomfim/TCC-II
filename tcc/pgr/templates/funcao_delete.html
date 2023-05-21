@@ -8,7 +8,8 @@
   <p>Tem certeza que deseja excluir a função "{{ funcao.nome }}"?</p>
   <form method="post">
     {% csrf_token %}
-    <button class="btn btn-danger" type="submit">Confirmar</button>
+    <button class="btn btn-danger" type="submit">Apagar</button>
+    <a class="btn btn-warning" href="/funcao/">Voltar</a>
   </form>
 </div>
 {% endblock %}

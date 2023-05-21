@@ -3,11 +3,12 @@
 
 {% block content %}
 <div class="container">
-  <h1>Editar Tipo Risco</h1>
+  <h1>Editar Perigos</h1>
   <form method="post">
     {% csrf_token %}
     {{ form|bootstrap }}
-    <button class="btn btn-primary" type="submit">Salvar</button>
+    <button class="btn btn-primary" type="submit">Alterar</button>
+    <a class="btn btn-danger" href="/descricaoperigo">Voltar</a>
   </form>
 </div>
   {% endblock %}

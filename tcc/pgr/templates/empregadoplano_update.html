@@ -9,7 +9,9 @@
   <form method="post">
     {% csrf_token %}
     {{ form|bootstrap }}
-    <button class="btn btn-primary" type="submit">Salvar</button>
+    <button class="btn btn-primary" type="submit">Alterar</button>
+    <a class="btn btn-danger" href="/empregadoplano/">Voltar</a>
+
   </form>
 </div>
   {% endblock %}
