@@ -23,8 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
-    'django_extensions',
     'pgr',
+    'django_extensions',
     'bootstrapform',
 ]
 

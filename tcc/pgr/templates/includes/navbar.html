@@ -79,8 +79,6 @@
             {% if user.is_authenticated %}
                 <span class="btn btn-light">Bem vindo {{request.user|title}}</span>
                 <a class="btn btn-danger" href="{% url 'logout' %}">Sair</a>
-            {% else %}
-                <a class="btn btn-primary" href="{% url 'signup' %}">Novo</a>
             {% endif %} 
         </div>
 </nav>

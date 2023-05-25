@@ -4,12 +4,9 @@ from django import forms
 from django.forms import ModelForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import( 
-Empresa, Funcao, Empregado, 
-Tiporisco, Descricaoperigo, Lesoes, Fonterisco, 
-Medidasimplementadas, Tempoexposicao, Nivelexposicao, Nivelprobabilidade, Nivelgravidade, Nivelrisco, Classificacaorisco, Avaliacaorisco,
-Identificacaorisco, Inventario, Medidascontrole, Planoacao, Empregadoinventario, Empregadoplano
-)
+from .models import( Empresa, Funcao, Empregado, Tiporisco, Descricaoperigo, Lesoes, Fonterisco, Medidasimplementadas, Tempoexposicao, Nivelexposicao, Nivelprobabilidade, Nivelgravidade, Nivelrisco, Classificacaorisco, Avaliacaorisco,
+Identificacaorisco, Inventario, Medidascontrole, Planoacao, Empregadoinventario, Empregadoplano)
+
 class SignUpForm(UserCreationForm):
     username = forms.CharField(max_length=50)
 

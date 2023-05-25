@@ -14,14 +14,14 @@
         {% endif %}
 
         <form class="form-signup" method="post">
-            <h4>Novo Empregado</h4>
+            <h4>Cadastrar Novo Usuário</h4>
             <div class="form">
                 {% csrf_token %}
                 <div class="form-group">
                 {{ form.as_p }}
                 </div>
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
-                <a href="{% url 'login' %}" class="btn btn-danger">Já tenho uma conta</a>
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+                <a href="{% url 'login' %}" class="link btn-danger">Já tenho Usuário</a>
             </div>
         </form>
     </div>

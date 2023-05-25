@@ -7,24 +7,31 @@
 
   <div class="side-logo">
       <div class="table-responsive">
-        <h2> Acompanhamento de Plano de Ação</h2>
-        <hr>
+          <h2> Plano de Ação</h2>
+          <hr>
           <table class="table">
             <thead>
               <tr>
                 <th>Plano de Ação</th>
                 <th>Empregado</th>
+                <th></th>
+                <th></th>
               </tr>
+
             </thead>
             <tbody>
-              {% for empregadosplano in empregadosplanos %}
+              {% for empregadoplano in empregadosplanos %}
                 <tr>
+                  <td>{{ empregadoplano.plano_acao }}</td>
+                  <td>{{ empregadoplano.empregado }}</td>
                   {% if user.is_superuser %}
-                  <td>{{ empregadosplano.plano_acao }}</td>
-                  <td>{{ empregadosplano.empregado }}</td>
+                  <td>
+                    <a class="btn btn-primary" href="/empregadoplano/update/{{empregadoplano.id}}/">Editar</a>
+                    <a class="btn btn-danger" href="/empregadoplano/delete/{{empregadoplano.id}}/">Apagar</a>
+                  </td>
                   {% endif %}
                   {% empty %}
-                  <td>Nenhum Plano de Ação x Empregado cadastrado.</td>
+                  <td>Nenhum Plano de Ação cadastrado.</td>
                 
               {% endfor %}
             </tbody>

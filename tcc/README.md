@@ -1,44 +1,8 @@
 # TCC-II
 Plataforma Web para Gerenciamento de Riscos
 
-
-
-
-
 ## A aplicação:
 # **Configurações iniciais:**
-
-Criar um ambiente virtual
-
-```python
-# Criar
-	# Linux
-		python3 -m venv venv
-	# Windows
-		python -m venv venv
-```
-
-Após a criação do ambiente (venv). Ativa-lo:
-
-```python
-# Ativar
-	# Linux
-		source venv/bin/activate
-	# Windows
-		venv\Scripts\Activate
-
-# Caso algum comando retorne um erro de permissão execute o código e tente novamente:
-
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
-```
-
-Fazer a instalação das dependências do projeto:
-
-```python
-pip install -r requirements.txt
-```
-
-
 
 ## Atores
 
@@ -71,8 +35,6 @@ pip install -r requirements.txt
 ### Avaliacao
 ### Plano de ação
 
-
-
 ## Levantamento de Requisitos de Software
 
 ### Requisitos Funcionais
@@ -97,7 +59,7 @@ pip install -r requirements.txt
 
 ### Front-End
 ## *sistema de login e senha*
-- O acesso será validado pelo metodo Authenticate do django, e será realizado digitando o nome do usuário e a senha.
+- O acesso será validado pelo django, e será realizado digitando o nome do usuário e a senha.
 
 ## Front-End
 - [x] Django
@@ -111,15 +73,16 @@ pip install -r requirements.txt
 - [x] Python
 - [x] Django
 
+
 ## Criar os diagramas utilizando o graph_models:
 python manage.py graph_models -a -o pgr_models.png
 
 
 ### Algumas ScreenShots
-## Card de Cadastro
-## Card de Login
+## Card da Tela Administrador
+## Card de Tela Cadastro
+## Card de Tela Login
 ## Card de Home
 ## Card da Usuario
-## Card da Empresa
 ## Card de Inventario
 ## Card do Plano de Ação

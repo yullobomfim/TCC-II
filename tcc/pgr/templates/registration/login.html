@@ -18,7 +18,9 @@
             {{ form.password.label_tag }}
             {{ form.password }}
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+          <button type="submit" class="btn btn-success btn-block">Entrar</button>
+          <a href="{% url 'signup' %}" class="link btn-danger">Não tenho Usuário</a>
+
         </form>
       </div>
     </div>
