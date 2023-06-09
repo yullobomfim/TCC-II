@@ -36,7 +36,7 @@ class Empregado(models.Model):
     funcao = models.ForeignKey(Funcao, verbose_name=("funcao"), on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.user} - {self.funcao}"
+        return f"{self.user}"
     class Meta:
         verbose_name = "empregado"
         verbose_name_plural = "empregados"
@@ -59,6 +59,7 @@ class Tiporisco(models.Model):
         ('OUTROS FATORES DE RISCO','OUTROS FATORES DE RISCO'),
         ('AUSÊNCIA DE FATORES DE RISCO','AUSÊNCIA DE FATORES DE RISCO'),  
     )
+    
     tipo_risco = models.CharField(max_length=250, choices=choice_tiporisco)
     
     def __str__(self):

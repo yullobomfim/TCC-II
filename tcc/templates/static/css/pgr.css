@@ -41,8 +41,8 @@
 .button.navbar-toggler:active {
     background-color: #007bff;
     color: #fff;
-  }
-  
+}
+
 
 .navbar-light .navbar-nav .nav-link {
     color:#fff; padding-left: 15px; padding-top: 10px; font-size: 18px; margin-right: 20px;

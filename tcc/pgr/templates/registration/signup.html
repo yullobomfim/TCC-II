@@ -7,11 +7,11 @@
         {% if messages %}
         <br>
         {% for message in messages %}
-        <div class="alert {{message.tags}}">
-            {{message}}
-        </div>
+            <div class="alert {{message.tags}}">
+                {{message}}
+            </div>
         {% endfor %}
-        {% endif %}
+    {% endif %}
 
         <form class="form-signup" method="post">
             <h4>Cadastrar Novo Usuário</h4>

@@ -7,7 +7,16 @@
       <div class="image-login col-6"> 
         <img class="img-fluid" src="{% static 'img/logo_pgr_gestao.png' %}" width="70%">
       </div>
-      <div class="form-login col-6 d-flex flex-start"> 
+      <div class="form-login col-6 d-flex flex-start">
+        {% if messages %}
+            <br>
+            {% for message in messages %}
+                <div class="alert {{message.tags}}">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
         <form method="post">
           {% csrf_token %}
           <div class="form-group mb-3">

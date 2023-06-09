@@ -2,7 +2,6 @@ FROM python:3.8
 ENV PYTHONUNBUFFERED 1
 RUN pip install --upgrade pip
 RUN apt-get update && apt-get install -y
-
 WORKDIR /tcc
 COPY requirements.txt .
 RUN pip install -r requirements.txt

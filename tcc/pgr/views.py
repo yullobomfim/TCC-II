@@ -6,7 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import EmpresaForm, EmpregadoForm, FuncaoForm, TiporiscoForm, Descricaoperigo, DescricaoperigoForm, LesoesForm,FonteriscoForm, MedidasimplementadasForm, TempoexposicaoForm, InventarioForm, AvaliacaoriscoForm, PlanoacaoForm, EmpregadoinventarioForm, EmpregadoplanoForm, MedidascontroleForm, NivelexposicaoForm, NivelprobabilidadeForm, NivelgravidadeForm,  NivelriscoForm, ClassificacaoriscoForm, IdentificacaoriscoForm
 from .models import Empresa, Funcao, Tiporisco, Empregado, Inventario, Identificacaorisco, Planoacao , Empregadoinventario, Empregadoplano, Avaliacaorisco 
 from django.urls import reverse_lazy
-
+from django.contrib import messages
 # Create your views here.
 @login_required
 def home(request):
@@ -17,6 +17,7 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "logado")
             return redirect('home')
     else:
         form = UserCreationForm()

@@ -5,8 +5,8 @@
 <div class="container">
 
   <h1>Excluir Inventário de riscos</h1>
-  <p>Tem certeza que deseja excluir</p>
-  <p>{{ empregadoinventario.empregado }} - {{ empregadoinventario.inventario}}"?</p>
+  <p>Tem certeza que deseja excluir?</p>
+  <p>{{ empregadoinventario.empregado }} - {{ empregadoinventario.inventario}}?</p>
   <form method="post">
     {% csrf_token %}
     <button class="btn btn-danger" type="submit">Apagar</button>
