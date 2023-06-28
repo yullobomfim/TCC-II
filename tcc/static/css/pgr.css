@@ -1,0 +1,178 @@
+.header {
+    border-bottom: 1px solid white;
+    padding: 20px;
+  }
+  
+  .body-form {
+    padding: 20px;
+  }
+  
+  .font-logo {
+    margin-left: 10px;
+    font-size: 40px;
+  }
+  
+  .btn-custom-primary {
+    background-color: #3D7B80;
+    border: none;
+    box-shadow: 2px 2px 5px 1px black;
+    color: white;
+    font-size: 20px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  .link-float {
+    text-decoration: none;
+    float: right;
+    margin: 20px;
+  }
+  
+  .side-logo {
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  .navbar-light .navbar-nav .nav-link {
+    display: block;
+    color: #fff;
+    padding-left: 15px;
+    padding-top: 5px;
+    font-size: 15px;
+    margin-right: 5px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  
+  .navbar-light .navbar-nav .nav-link:hover,
+  .navbar-light .navbar-nav .nav-link:focus {
+    color: rgba(0, 0, 0, 0.7);
+    background-color: #007bff;
+  }
+  
+  .navbar-toggler:active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .nav-tabs>li>a {
+    font-weight: bold;
+    margin-right: 5px;
+    line-height: 1.42857143;
+    border: 1px solid #ccc;
+    border-radius: 4px 4px 0 0;
+  }
+  
+  .nav-tabs>li.active>a,
+  .nav-tabs>li.active>a:focus,
+  .nav-tabs>li.active>a:hover {
+    color: #fff;
+    cursor: default;
+    background-color: #007bff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    cursor: pointer;
+  }
+  
+  .dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    font-size: 16px;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+  }
+  
+  .bg-side {
+    background-color: #391D34;
+    color: white;
+    height: 100vh;
+  }
+  
+  .body-card{
+    height: 55vh;
+    min-height: 55vh;
+    max-height: 55vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .container {
+    min-height: inherit;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    /* display: flex; */
+  }
+
+  .image-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-login img {
+    height: 400px;
+    width: 400px;
+  }
+
+  .form-login form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+  }
+
+footer{
+    margin: auto;
+    align-items: center;
+    width: 100%;
+}
+
+footer div {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+footer div div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+hr{
+    height: 2px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.form-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+    margin-top: 10px;
+}
+
+body > div > div.body-card > section > div > form > div > div > p:nth-child(2) > label {
+    margin-left: 10px;
+}
+
+body > div > div.body-card > section > div > form > div > div > p:nth-child(5) > span,
+body > div > div.body-card > section > div > form > div > div > ul,
+body > div > div.body-card > section > div > form > div > div > p:nth-child(1) > span {
+    color: gray;
+    font-size: 10pt;
+    text-decoration: none;
+    list-style: none;
+}

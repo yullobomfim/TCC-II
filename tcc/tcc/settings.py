@@ -13,7 +13,7 @@ SECRET_KEY = '9rmtaq02+a!j$id*8)kd(m%4e_cm@3ohx^dxee0ass(jdwj_+y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1' , 'localhost']
+ALLOWED_HOSTS = ['*','0.0.0.0', '127.0.0.1' ,'1cda-2804-d47-633a-f400-891c-d6d7-a044-e133.ngrok-free.app', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
@@ -34,7 +34,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
