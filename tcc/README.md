@@ -2,7 +2,35 @@
 Plataforma Web para Gerenciamento de Riscos
 
 ## A aplicação:
-# **Configurações iniciais:**
+Para rodar um arquivo Docker, você precisa seguir os seguintes passos:
+
+
+Certifique-se de que você tenha o Docker instalado em sua máquina. Você pode verificar se o Docker está instalado digitando o seguinte comando no seu terminal:
+
+css
+Copy code
+docker --version
+Se o Docker estiver instalado, você verá a versão do Docker sendo exibida.
+
+Em seguida, certifique-se de que você tenha o arquivo Docker correto. Normalmente, o arquivo Docker é chamado de "Dockerfile" e contém as instruções para construir a imagem Docker.
+
+Abra um terminal e navegue até o diretório onde o arquivo Docker está localizado.
+
+Agora você pode construir a imagem Docker usando o comando a seguir:
+
+docker build -t nome_da_imagem .
+Certifique-se de substituir "nome_da_imagem" pelo nome que você deseja dar à sua imagem Docker. O ponto (".") indica que o Dockerfile está no diretório atual.
+
+Após a conclusão da construção da imagem, você pode executar o contêiner usando o seguinte comando:
+
+arduino
+Copy code
+docker run nome_da_imagem
+Novamente, substitua "nome_da_imagem" pelo nome que você escolheu para sua imagem Docker.
+
+
+Com esses passos, você poderá rodar um arquivo Docker em sua máquina. Lembre-se de que é necessário ter privilégios administrativos ou permissões adequadas para executar comandos Docker.
+
 
 ## Atores
 
@@ -72,10 +100,6 @@ Plataforma Web para Gerenciamento de Riscos
 ## Back-End
 - [x] Python
 - [x] Django
-
-
-## Criar os diagramas utilizando o graph_models:
-python manage.py graph_models -a -o pgr_models.png
 
 
 ### Algumas ScreenShots
