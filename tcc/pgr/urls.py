@@ -2,7 +2,7 @@ from django.urls import path, include
 from . import views
 from .views import (
     home,
-    signup,
+    cadastro,
     EmpresaListView,
     EmpresaCreateView,
     EmpresaUpdateView,
@@ -61,18 +61,18 @@ from .views import (
     # urls.py
 urlpatterns = [
     path('', views.home, name='home'),
-    path('signup/', views.signup, name='signup'),
-    
+    path('cadastro/', views.cadastro, name='cadastro'),
+
     path('empresa/', EmpresaListView.as_view(), name='empresa_list'),
     path('empresa/create/', EmpresaCreateView.as_view(), name='empresa_create'),
     path('empresa/update/<int:pk>/', EmpresaUpdateView.as_view(), name='empresa_update'),
     path('empresa/delete/<int:pk>/', EmpresaDeleteView.as_view(), name='empresa_delete'),
-    
+
     path('funcao/', FuncaoListView.as_view(), name='funcao_list'),
     path('funcao/create/', FuncaoCreateView.as_view(), name='funcao_create'),
     path('funcao/update/<int:pk>/', FuncaoUpdateView.as_view(), name='funcao_update'),
     path('funcao/delete/<int:pk>/', FuncaoDeleteView.as_view(), name='funcao_delete'),
-    
+
     path('tiporisco/', TiporiscoListView.as_view(), name='tiporisco_list'),
     path('tiporisco/create/', TiporiscoCreateView.as_view(), name='tiporisco_create'),
     path('tiporisco/update/<int:pk>/', TiporiscoUpdateView.as_view(), name='tiporisco_update'),
@@ -107,16 +107,14 @@ urlpatterns = [
     path('avaliacaorisco/create/', AvaliacaoriscoCreateView.as_view(), name='avaliacaorisco_create'),
     path('avaliacaorisco/update/<int:pk>/', AvaliacaoriscoUpdateView.as_view(), name='avaliacaorisco_update'),
     path('avaliacaorisco/delete/<int:pk>/', AvaliacaoriscoDeleteView.as_view(), name='avaliacaorisco_delete'),
-    
+
     path('empregadoinventario/', EmpregadoinventarioListView.as_view(), name='empregadoinventario_list'),
     path('empregadoinventario/create/', EmpregadoinventarioCreateView.as_view(), name='empregadoinventario_create'),
     path('empregadoinventario/update/<int:pk>/', EmpregadoinventarioUpdateView.as_view(), name='empregadoinventario_update'),
     path('empregadoinventario/delete/<int:pk>/', EmpregadoinventarioDeleteView.as_view(), name='empregadoinventario_delete'),
-    
+
     path('empregadoplano/', EmpregadoplanoListView.as_view(), name='empregadoplano_list'),
     path('empregadoplano/create/', EmpregadoplanoCreateView.as_view(), name='empregadoplano_create'),
     path('empregadoplano/update/<int:pk>/', EmpregadoplanoUpdateView.as_view(), name='empregadoplano_update'),
     path('empregadoplano/delete/<int:pk>/', EmpregadoplanoDeleteView.as_view(), name='empregadoplano_delete'),    
-    
-
 ]

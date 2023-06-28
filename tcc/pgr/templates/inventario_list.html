@@ -3,9 +3,10 @@
 
 {% block content %}
 <div class="container">
+  <div class="side-logo">
+    <h2>Inventário de Riscos</h2>
+    <hr>
       <div class="table-responsive">
-        <h2>Inventário de Riscos</h2>
-        <hr>
         <h4> Identificação de Perigos</h4>
         <hr>
         <table class="table">
@@ -22,7 +23,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for inventario in inventarios %}
+          {% for inventario in inventarios %}
             <tr>
                 <td>{{ inventario.funcao }}</td>
                 <td>{{ inventario.empregado }}</td>
@@ -32,14 +33,14 @@
                 <td>{{ inventario.tempo_exposicao }}</td>
                 <td>
                   {% if user.is_superuser %}
-                  <a class="btn btn-primary" href="/identificacaorisco/update/{{inventario.id}}/">Editar</a>
-                  <a class="btn btn-danger" href="/identificacaorisco/delete/{{inventario.id}}/">Apagar</a>
+                  <a class="btn btn-primary" href="/inventario/update/{{inventario.id}}/">Editar</a>
+                  <a class="btn btn-danger" href="/inventario/delete/{{inventario.id}}/">Apagar</a>
                   {% endif %}
                 </td>
             {% empty %}
                 <td>Nenhum risco identificado.</td>
               </tr>
-            {% endfor %}
+          {% endfor %}
           </tbody>
       </table>
 
@@ -56,7 +57,6 @@
             <th>Nível de Gravidade</th>
             <th>Nível de Risco</th>
             <th>Classificação de Risco</th>
-
           </tr>
         </thead>
         <tbody>
@@ -76,6 +76,7 @@
         </tbody>
 </table>
   </div>
+</div>
 </div>
 
 {% endblock %}

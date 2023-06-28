@@ -8,7 +8,7 @@ from .models import( Empresa, Funcao, Empregado, Tiporisco, Descricaoperigo, Les
 Tempoexposicao, Nivelexposicao, Nivelprobabilidade, Nivelgravidade, Nivelrisco, Classificacaorisco, Avaliacaorisco,
 Identificacaorisco, Inventario, Medidascontrole, Planoacao, Empregadoinventario, Empregadoplano)
 
-class SignUpForm(UserCreationForm):
+class CadastroForm(UserCreationForm):
     username = forms.CharField(max_length=50)
     class Meta:
         model = User

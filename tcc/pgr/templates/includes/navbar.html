@@ -17,8 +17,9 @@
                 <a class="dropdown-item" href="/identificacaorisco/create">Identificação de Perigos</a>
                 <a class="dropdown-item" href="/avaliacaorisco/create">Avaliação de Riscos</a>
                 <a class="dropdown-item" href="/planoacao/create">Controle dos Riscos</a>
-                <a class="dropdown-item" href="/empregadoinventario/create">Inventário de Riscos</a>
-                <a class="dropdown-item" href="/empregadoplano/create">Plano de Ação</a>
+                <a class="dropdown-item" href="/inventario/create">Inventário de Riscos</a>
+                <a class="dropdown-item" href="/empregadoinventario/create">Inventário de Riscos x Empregados</a>
+                <a class="dropdown-item" href="/empregadoplano/create">Plano de Ação x Empregados</a>
             </div>
             {% endif %}
         </li>
@@ -34,8 +35,9 @@
                 <a class="dropdown-item" href="/identificacaorisco">Identificação de Perigos</a>
                 <a class="dropdown-item" href="/avaliacaorisco">Avaliação dos Riscos</a>
                 <a class="dropdown-item" href="/planoacao">Controle dos Riscos</a>
-                <a class="dropdown-item" href="/empregadoinventario">Inventário de Riscos</a>
-                <a class="dropdown-item" href="/empregadoplano">Plano de Ação</a>
+                <a class="dropdown-item" href="/inventario">Inventário de Riscos</a>
+                <a class="dropdown-item" href="/empregadoinventario">Inventário de Riscos x Empregados</a>
+                <a class="dropdown-item" href="/empregadoplano">Plano de Ação x Empregados</a>
             </div>
             {% endif %}
         </li>
@@ -49,6 +51,8 @@
                 <a class="dropdown-item" href="/planoacao">Controle dos Riscos</a>
             </div>
         </li>
+        {% endif %}
+        {% if user.is_superuser %}
         <li class="nav-item dropdown dmenu">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Programa de Gerenciamento de Riscos (PGR)</a>
             <div class="dropdown-menu sm-menu">
@@ -56,7 +60,7 @@
                 <a class="dropdown-item" href="/empregadoplano">Plano de Ação</a>
             </div>
         </li>
-        {% endif %}
+        {% endif %}        
         <li class="nav-item">
             <li class="nav-item dropdown dmenu">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Legislações</a>

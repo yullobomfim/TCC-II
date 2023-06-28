@@ -37,6 +37,7 @@ class Empregado(models.Model):
 
     def __str__(self):
         return f"{self.user}"
+    
     class Meta:
         verbose_name = "empregado"
         verbose_name_plural = "empregados"
@@ -950,7 +951,7 @@ class Descricaoperigo(models.Model):
     descricao_perigo = models.CharField(max_length=250, choices=choice_perigo)
 
     def __str__(self):
-        return f"{self.tipo_risco} - {self.descricao_perigo}"
+        return f"{self.descricao_perigo}"
 
     class Meta:
         verbose_name = "descricao_perigo"
@@ -1297,7 +1298,7 @@ class Identificacaorisco(models.Model):
     tempo_exposicao = models.ForeignKey(Tempoexposicao, verbose_name=("exposicao"), on_delete=models.CASCADE)
     
     def __str__(self):
-        return f"{self.funcao} - {self.descricao_perigo}"
+        return f"{self.descricao_perigo}"
     
     class Meta:
         verbose_name = "identificacao_risco"
@@ -1313,7 +1314,7 @@ class Avaliacaorisco(models.Model):
     nivel_gravidade = models.ForeignKey(Nivelgravidade, verbose_name=('nivel_gravidade'), on_delete=models.CASCADE)
     
     def __str__(self):
-        return f"{self.descricao_perigo} - {self.classificacao_risco}"
+        return f"{self.classificacao_risco}"
 
     class Meta:
         verbose_name = "avaliacao_risco"
@@ -1349,7 +1350,7 @@ class Planoacao(models.Model):
     class Meta:
         verbose_name = "plano_acao"
         verbose_name_plural = "planos_acao"
-        ordering = ['inventario']
+        ordering = ['oque']
 
 ## CONTROLE DOS RISCOS
 #  INVENTÁRIO DO EMPREGADO

@@ -12,18 +12,18 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 @login_required
 def home(request):
-    return render (request,'home.html')
+    return render(request, 'home.html')
 
-def signup(request):
+def cadastro(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Usuário logado com Sucesso")
+            messages.success(request, "Usuário cadastrado com Sucesso")
             return redirect('home')
     else:
         form = UserCreationForm()
-    return render(request, 'registration/signup.html', {'form': form})
+    return render(request, 'registration/cadastro.html', {'form': form})
 
 # Views para o CRUD Empregado
 class EmpregadoListView(LoginRequiredMixin, ListView):
@@ -121,7 +121,7 @@ class TiporiscoDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'tiporisco_delete.html'
     success_url = reverse_lazy('tiporisco_list')
 
-# Views para o CRUD Tipo Risco
+# Views para o CRUD Descrição Perigo
 class DescricaoperigoListView(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     model = Descricaoperigo

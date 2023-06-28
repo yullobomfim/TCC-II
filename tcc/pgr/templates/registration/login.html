@@ -8,17 +8,15 @@
         <img class="img-fluid" src="{% static 'img/logo_pgr_gestao.png' %}" width="70%">
       </div>
       <div class="form-login col-6 d-flex flex-start">
-        {% if messages %}
-            <br>
-            {% for message in messages %}
-                <div class="alert {{message.tags}}">
-                    {{message}}
-                </div>
-            {% endfor %}
-        {% endif %}
-        
         <form method="post">
-          {% csrf_token %}
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+                  {% csrf_token %}
           <div class="form-group mb-3">
             {{ form.username.label_tag }}
             {{ form.username }}
@@ -28,7 +26,7 @@
             {{ form.password }}
           </div>
           <button type="submit" class="btn btn-success btn-block">Entrar</button>
-          <a href="{% url 'signup' %}" class="link btn-danger">Não tenho Usuário</a>
+          <a href="{% url 'cadastro' %}" class="link btn-danger">Não tenho Usuário</a>
 
         </form>
       </div>

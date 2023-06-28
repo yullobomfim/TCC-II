@@ -35,16 +35,16 @@ Plataforma Web para Gerenciamento de Riscos
 ### Avaliacao
 ### Plano de ação
 
-## Levantamento de Requisitos de Software
+## Levantamento de Requisitos 
 
 ### Requisitos Funcionais
-## Levantamento de Requisitos de Software
+## Levantamento de Requisitos
 
 ## Requisitos Funcionais
 
 - Todos os empregados devem possuir um cadastro com usuário e senha.
-- Todos os empregados logados no sistema podem visualizar o seu inventário de riscos.
-- Todos os empregados logados no sistema podem visualizar o seu plano de ação.
+- Todos os empregados logados no sistema podem visualizar o inventário de riscos.
+- Todos os empregados logados no sistema podem visualizar o plano de ação.
 
 ### Requisitos Não-Funcionais
 ## Requisitos Não-Funcionais
