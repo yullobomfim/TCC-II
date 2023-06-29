@@ -58,7 +58,6 @@ from .views import (
     PlanoacaoUpdateView,
     PlanoacaoDeleteView,
 )
-    # urls.py
 urlpatterns = [
     path('', views.home, name='home'),
     path('cadastro/', views.cadastro, name='cadastro'),

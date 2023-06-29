@@ -7,7 +7,9 @@
   <h1>Editar Avaliação de Riscos</h1>
   <form method="post">
     {% csrf_token %}
+
     {{ form|bootstrap }}
+    
     <button class="btn btn-primary" type="submit">Alterar</button>
     <a class="btn btn-danger" href="/avaliacaorisco/">Voltar</a>
   </form>
