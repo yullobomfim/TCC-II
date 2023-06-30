@@ -61,7 +61,7 @@ from .views import (
 urlpatterns = [
     path('', views.home, name='home'),
     path('cadastro/', views.cadastro, name='cadastro'),
-
+    
     path('empresa/', EmpresaListView.as_view(), name='empresa_list'),
     path('empresa/create/', EmpresaCreateView.as_view(), name='empresa_create'),
     path('empresa/update/<int:pk>/', EmpresaUpdateView.as_view(), name='empresa_update'),
